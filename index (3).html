@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AVOVA — The Manifesto</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Cinzel:wght@400;600&family=Inter:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #c8c0b0;
+    color: #0a0806;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1.85;
+    min-height: 100vh;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    padding-bottom: 9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    background: radial-gradient(ellipse at center, #1c1a16 0%, #080604 100%);
+  }
+
+  .word-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.12em;
+    margin-bottom: 2rem;
+  }
+
+  .letter {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(4rem, 13vw, 9rem);
+    font-weight: 600;
+    line-height: 1;
+    display: inline-block;
+    animation: fadeUp 1.2s ease both;
+  }
+
+  .letter.pos { color: #e8c96e; }
+  .letter.neg { color: #90b8d8; }
+  .letter.zero {
+    color: #ffffff;
+    font-size: clamp(4.5rem, 14vw, 10rem);
+    text-shadow: 0 0 60px rgba(255,255,255,0.2);
+  }
+
+  .letter:nth-child(1) { animation-delay: 0.1s; }
+  .letter:nth-child(2) { animation-delay: 0.3s; }
+  .letter:nth-child(3) { animation-delay: 0.5s; }
+  .letter:nth-child(4) { animation-delay: 0.7s; }
+  .letter:nth-child(5) { animation-delay: 0.9s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .charge-labels {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 1.2s ease 1.1s both;
+  }
+
+  .charge {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    width: clamp(4rem, 13vw, 9rem);
+    text-align: center;
+  }
+
+  .charge.pos { color: #e8c96e; }
+  .charge.neg { color: #90b8d8; }
+  .charge.zero { color: rgba(255,255,255,0.8); width: clamp(4.5rem, 14vw, 10rem); }
+
+  .cover-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1.2s ease 1.3s both;
+  }
+
+  .cover-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-style: italic;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.7;
+    animation: fadeUp 1.2s ease 1.5s both;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeUp 1.2s ease 2s both;
+  }
+
+  .scroll-hint span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.25), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  /* BODY SECTIONS */
+  .section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    border-bottom: 1px solid #a89e8e;
+  }
+
+  .section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: #7a6018;
+    margin-bottom: 2.5rem;
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: #0a0806;
+    margin-bottom: 2rem;
+    line-height: 1.3;
+  }
+
+  p {
+    margin-bottom: 1.6rem;
+    color: #0a0806;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  em { font-style: italic; color: #1a1410; }
+
+  strong { font-weight: 600; color: #0a0806; }
+
+  /* PULLQUOTE */
+  .pullquote {
+    border-left: 2px solid #7a6018;
+    padding: 1.5rem 0 1.5rem 2.5rem;
+    margin: 3rem 0;
+    font-style: italic;
+    font-size: 1.45rem;
+    line-height: 1.7;
+    color: #0a0806;
+    font-weight: 400;
+  }
+
+  /* ARROW HERO */
+  .arrow-hero {
+    margin: 4rem -2rem;
+    padding: 4rem 2rem;
+    background: #0a0806;
+    text-align: center;
+  }
+
+  .arrow-sequence {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25em;
+    flex-wrap: nowrap;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+
+  .arr {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 4.5vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .arr.up { color: #e8c96e; }
+  .arr.dn { color: #90b8d8; }
+  .arr.ctr { color: #ffffff; }
+  .arr.dash { color: rgba(255,255,255,0.2); font-weight: 300; font-family: 'Cormorant Garamond', serif; }
+
+  .arrow-labels {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0;
+    margin-top: 1.5rem;
+  }
+
+  .arr-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    text-align: center;
+    padding: 0 0.4rem;
+  }
+
+  .arr-label.up { color: #e8c96e; min-width: clamp(1.4rem, 4.5vw, 3.5rem); }
+  .arr-label.dn { color: #90b8d8; min-width: clamp(1.4rem, 4.5vw, 3.5rem); }
+  .arr-label.ctr { color: rgba(255,255,255,0.65); min-width: clamp(1.4rem, 4.5vw, 3.5rem); }
+  .arr-label.dash { visibility: hidden; min-width: 1em; }
+
+  .arrow-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: rgba(255,255,255,0.5);
+    margin-top: 2rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* POLARITY MAP */
+  .polarity-map {
+    margin: 3rem 0;
+    border-top: 1px solid #a89e8e;
+    border-bottom: 1px solid #a89e8e;
+    padding: 2.5rem 0;
+  }
+
+  .polarity-row {
+    display: grid;
+    grid-template-columns: 3rem 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #a89e8e;
+  }
+
+  .polarity-row:last-child { border-bottom: none; }
+
+  .pol-letter {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .pol-letter.pos { color: #5a3e08; }
+  .pol-letter.neg { color: #1a3a5a; }
+  .pol-letter.zero { color: #0a0806; font-size: 2.1rem; }
+
+  .pol-charge {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #0a0806;
+  }
+
+  .pol-meaning {
+    font-style: italic;
+    color: #0a0806;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* PRINCIPLES */
+  .principles { margin: 3rem 0; }
+
+  .principle {
+    padding: 2rem 0;
+    border-bottom: 1px solid #a89e8e;
+  }
+
+  .principle:last-child { border-bottom: none; }
+
+  .principle-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #7a6018;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .principle-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: #0a0806;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  /* ARC TIMELINE */
+  .arc {
+    margin: 3rem 0;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .arc::before {
+    content: '';
+    position: absolute;
+    left: 0.4rem;
+    top: 0.6rem;
+    bottom: 0.6rem;
+    width: 1px;
+    background: linear-gradient(to bottom, #7a6018, #a89e8e);
+  }
+
+  .arc-step {
+    position: relative;
+    padding: 0 0 2.5rem 2rem;
+  }
+
+  .arc-step:last-child { padding-bottom: 0; }
+
+  .arc-step::before {
+    content: '';
+    position: absolute;
+    left: -1.6rem;
+    top: 0.55rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #7a6018;
+  }
+
+  .arc-stage {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #7a6018;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .arc-desc {
+    font-size: 1rem;
+    color: #0a0806;
+    line-height: 1.6;
+  }
+
+  /* CLOSING */
+  .closing {
+    background: #0a0806;
+    color: #c8c0b0;
+    text-align: center;
+    padding: 8rem 2rem;
+  }
+
+  .closing-word {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    letter-spacing: 0.35em;
+    color: #e8c96e;
+    display: block;
+    margin-bottom: 3rem;
+  }
+
+  .closing p {
+    color: rgba(200,192,176,0.85);
+    max-width: 560px;
+    margin: 0 auto 1.6rem;
+    font-size: 1.1rem;
+  }
+
+  .closing .final-line {
+    font-style: italic;
+    font-size: 1.3rem;
+    color: rgba(200,192,176,0.95);
+    margin-top: 3rem;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: #7a6018;
+    margin: 3rem auto;
+  }
+
+  @media (max-width: 600px) {
+    .polarity-row { grid-template-columns: 2.5rem 1fr; }
+    .pol-charge { display: none; }
+    .pol-meaning { grid-column: 2; }
+  }
+  /* SUBSCRIBE BAR */
+  .subscribe-bar {
+    background: #0a0806;
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .subscribe-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(200,192,176,0.7);
+    margin-bottom: 1.2rem;
+  }
+
+  .subscribe-form {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .subscribe-input {
+    flex: 1;
+    padding: 0.75rem 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    background: #1a1814;
+    border: 1px solid #3a3428;
+    border-right: none;
+    color: #c8c0b0;
+    outline: none;
+  }
+
+  .subscribe-input::placeholder {
+    color: rgba(200,192,176,0.35);
+  }
+
+  .subscribe-input:focus {
+    border-color: #7a6018;
+  }
+
+  .subscribe-btn {
+    padding: 0.75rem 1.6rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    background: #7a6018;
+    color: #f0e8d0;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .subscribe-btn:hover {
+    background: #9a7820;
+  }
+
+  .subscribe-confirm {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(200,192,176,0.7);
+    margin-top: 0.75rem;
+  }
+
+  /* THE SEAL */
+  .seal-glyph {
+    width: clamp(120px, 22vw, 190px);
+    height: auto;
+    margin-bottom: 2.2rem;
+    animation: fadeUp 1.2s ease both, sealBreath 6s ease-in-out 17s infinite;
+  }
+  @keyframes sealBreath {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.028); }
+  }
+  .seal-section-glyph {
+    width: clamp(150px, 26vw, 230px);
+    height: auto;
+    display: block;
+    margin: 2.2rem auto 2.6rem;
+  }
+  .seal-section-glyph circle { stroke: #0a0806 !important; }
+  .seal-section-glyph path { stroke: #0a0806 !important; }
+  @media (prefers-reduced-motion: reduce) { .seal-glyph { animation: fadeUp 1.2s ease both; } }
+  @media (prefers-reduced-motion: reduce){
+    .seal-glyph .sw{animation:none;opacity:0}
+    .seal-glyph .st-o,.seal-glyph .st-a,.seal-glyph .st-bar,}
+
+
+  /* FIRST FOLD — the seal alone */
+  .seal-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at center, #16140f 0%, #050403 100%);
+  }
+  .seal-hero .seal-glyph {
+    width: min(72vmin, 620px);
+    margin-bottom: 0;
+  }
+
+
+  /* HIDDEN PATH figures */
+  .geometry-row { display:flex; gap:2.5rem; justify-content:center; flex-wrap:wrap; margin:2.4rem 0; }
+  .geometry-fig { margin:0; flex:1 1 260px; max-width:340px; }
+  .geometry-fig svg { width:100%; height:auto; display:block; }
+  .geometry-fig figcaption { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.95rem; text-align:center; margin-top:0.8rem; opacity:0.75; line-height:1.5; }
+
+
+  /* HIDDEN PATH — living figures */
+  .f72 .gp{stroke-dasharray:53646;stroke-dashoffset:53646;animation:f72d 150s linear infinite}
+  @keyframes f72d{to{stroke-dashoffset:0}}
+  .f72 .gm{offset-path:path('M156.0 740.9 L500.0 80.0 L844.0 740.9 L105.3 643.6 L608.7 94.3 L770.0 821.7 L81.6 536.6 L710.0 136.3 L677.5 880.6 L86.4 427.1 L797.0 203.0 L572.9 913.6 L119.4 322.5 L863.7 290.0 L463.4 918.4 L178.3 230.0 L905.7 391.3 L356.4 894.7 L259.1 156.0 L920.0 500.0 L259.1 844.0 L356.4 105.3 L905.7 608.7 L178.3 770.0 L463.4 81.6 L863.7 710.0 L119.4 677.5 L572.9 86.4 L797.0 797.0 L86.4 572.9 L677.5 119.4 L710.0 863.7 L81.6 463.4 L770.0 178.3 L608.7 905.7 L105.3 356.4 L844.0 259.1 L500.0 920.0 L156.0 259.1 L894.7 356.4 L391.3 905.7 L230.0 178.3 L918.4 463.4 L290.0 863.7 L322.5 119.4 L913.6 572.9 L203.0 797.0 L427.1 86.4 L880.6 677.5 L136.3 710.0 L536.6 81.6 L821.7 770.0 L94.3 608.7 L643.6 105.3 L740.9 844.0 L80.0 500.0 L740.9 156.0 L643.6 894.7 L94.3 391.3 L821.7 230.0 L536.6 918.4 L136.3 290.0 L880.6 322.5 L427.1 913.6 L203.0 203.0 L913.6 427.1 L322.5 880.6 L290.0 136.3 L918.4 536.6 L230.0 821.7 L391.3 94.3 L894.7 643.6 L156.0 740.9');animation:f72m 150s linear infinite}
+  @keyframes f72m{to{offset-distance:100%}}
+  .f7 .gp{stroke-dasharray:4597;stroke-dashoffset:4597;animation:f7d 16s linear infinite}
+  @keyframes f7d{to{stroke-dashoffset:0}}
+  .f7 .gm{offset-path:path('M90.5 593.5 L500.0 80.0 L909.5 593.5 L317.8 878.4 L171.6 238.1 L828.4 238.1 L682.2 878.4 L90.5 593.5');animation:f7m 16s linear infinite}
+  @keyframes f7m{to{offset-distance:100%}}
+  .fI .gp{stroke-dasharray:53646;stroke-dashoffset:53646;animation:fId 150s linear infinite}
+  @keyframes fId{to{stroke-dashoffset:0}}
+  .fI .gm{offset-path:path('M156.0 740.9 L500.0 80.0 L844.0 740.9 L105.3 643.6 L608.7 94.3 L770.0 821.7 L81.6 536.6 L710.0 136.3 L677.5 880.6 L86.4 427.1 L797.0 203.0 L572.9 913.6 L119.4 322.5 L863.7 290.0 L463.4 918.4 L178.3 230.0 L905.7 391.3 L356.4 894.7 L259.1 156.0 L920.0 500.0 L259.1 844.0 L356.4 105.3 L905.7 608.7 L178.3 770.0 L463.4 81.6 L863.7 710.0 L119.4 677.5 L572.9 86.4 L797.0 797.0 L86.4 572.9 L677.5 119.4 L710.0 863.7 L81.6 463.4 L770.0 178.3 L608.7 905.7 L105.3 356.4 L844.0 259.1 L500.0 920.0 L156.0 259.1 L894.7 356.4 L391.3 905.7 L230.0 178.3 L918.4 463.4 L290.0 863.7 L322.5 119.4 L913.6 572.9 L203.0 797.0 L427.1 86.4 L880.6 677.5 L136.3 710.0 L536.6 81.6 L821.7 770.0 L94.3 608.7 L643.6 105.3 L740.9 844.0 L80.0 500.0 L740.9 156.0 L643.6 894.7 L94.3 391.3 L821.7 230.0 L536.6 918.4 L136.3 290.0 L880.6 322.5 L427.1 913.6 L203.0 203.0 L913.6 427.1 L322.5 880.6 L290.0 136.3 L918.4 536.6 L230.0 821.7 L391.3 94.3 L894.7 643.6 L156.0 740.9');animation:fIm 150s linear infinite}
+  @keyframes fIm{to{offset-distance:100%}}
+  .fE .gp{stroke-dasharray:39265;stroke-dashoffset:39265;animation:fEd 140s linear infinite}
+  @keyframes fEd{to{stroke-dashoffset:0}}
+  .fE .gm{offset-path:path('M156.0 740.9 L157.0 739.0 L220.3 613.2 L280.5 485.9 L337.4 357.1 L391.0 226.9 L441.3 95.4 L445.9 83.5 L447.1 85.2 L527.2 195.0 L609.7 302.9 L694.7 408.9 L782.1 513.0 L871.8 615.0 L895.4 641.6 L893.4 641.9 L763.9 662.6 L634.9 686.1 L506.4 712.1 L378.5 740.8 L251.2 772.2 L193.0 786.6 L193.6 784.7 L231.6 664.0 L267.5 542.7 L301.0 420.7 L332.4 298.1 L361.4 175.0 L378.5 98.0 L379.8 99.3 L468.0 183.8 L557.5 266.8 L648.4 348.4 L740.6 428.4 L834.2 506.8 L913.8 571.8 L912.1 572.4 L801.4 612.8 L691.3 654.8 L581.9 698.5 L473.1 743.8 L365.1 790.7 L257.7 839.2 L254.4 840.7 L254.6 838.9 L265.8 725.8 L275.5 612.5 L283.7 499.1 L290.4 385.6 L295.5 272.0 L299.1 158.4 L300.1 130.6 L301.6 131.5 L394.9 189.3 L488.9 245.9 L583.5 301.4 L678.9 355.7 L774.8 408.8 L871.5 460.8 L919.8 486.4 L918.4 487.3 L828.6 543.4 L739.4 600.5 L650.9 658.6 L563.0 717.6 L475.8 777.6 L389.2 838.6 L327.4 882.9 L327.3 881.3 L317.4 779.6 L306.4 678.0 L294.5 576.5 L281.6 475.2 L267.8 374.0 L252.9 272.9 L237.3 172.3 L238.7 172.9 L330.6 208.7 L422.8 243.7 L515.2 277.9 L608.0 311.3 L701.1 343.8 L794.4 375.6 L888.1 406.5 L911.1 414.1 L910.0 415.1 L838.6 478.0 L767.8 541.5 L697.4 605.6 L627.6 670.2 L558.2 735.3 L489.4 801.1 L421.1 867.3 L384.0 903.7 L383.7 902.3 L362.7 812.9 L341.0 723.7 L318.8 634.6 L295.8 545.7 L272.3 456.9 L248.1 368.4 L223.2 280.0 L201.7 204.4 L203.0 204.8 L288.4 228.3 L374.0 251.3 L459.7 273.7 L545.6 295.6 L631.6 316.9 L717.7 337.7 L804.0 357.9 L890.3 377.6 L902.8 381.0 L901.9 381.9 L842.8 443.8 L784.1 506.0 L725.8 568.5 L667.9 631.4 L610.3 694.6 L553.1 758.1 L496.2 822.0 L439.8 886.2 L417.0 911.7 L416.6 910.5 L391.0 832.1 L365.0 753.8 L338.6 675.6 L311.8 597.6 L284.6 519.7 L256.9 441.9 L228.9 364.3 L200.5 286.9 L179.1 229.1 L180.3 229.3 L258.5 244.4 L336.7 259.2 L415.0 273.6 L493.4 287.7 L571.8 301.3 L650.3 314.6 L728.9 327.6 L807.5 340.1 L886.2 352.3 L893.8 354.0 L893.0 354.9 L843.4 413.6 L794.0 472.5 L744.9 531.5 L696.0 590.8 L647.4 650.3 L599.0 710.0 L550.9 769.9 L503.1 830.0 L455.4 890.3 L435.6 915.0 L435.1 913.9 L408.2 844.9 L381.1 775.9 L353.6 707.0 L325.9 638.2 L298.0 569.5 L269.8 501.0 L241.3 432.5 L212.6 364.1 L183.6 295.9 L163.7 248.5 L164.8 248.6 L235.9 256.7 L307.0 264.6 L378.1 272.3 L449.3 279.7 L520.5 286.9 L591.7 293.8 L662.9 300.5 L734.2 307.0 L805.5 313.2 L876.8 319.1 L879.4 319.8 L878.7 320.6 L839.7 377.6 L800.8 434.6 L762.1 491.8 L723.6 549.1 L685.2 606.5 L647.0 664.1 L609.0 721.7 L571.2 779.5 L533.6 837.4 L496.1 895.4 L480.4 919.5 L479.9 918.6 L448.4 859.9 L416.8 801.2 L385.0 742.7 L353.1 684.2 L321.0 625.8 L288.7 567.5 L256.3 509.3 L223.7 451.2 L190.9 393.2 L158.0 335.3 L134.4 293.2 L135.4 293.2 L199.7 292.4 L264.0 291.4 L328.3 290.2 L392.6 288.9 L456.9 287.4 L521.2 285.8 L585.4 284.0 L649.7 282.1 L714.0 279.9 L778.2 277.7 L842.5 275.2 L854.5 274.8 L854.1 275.6 L826.1 331.0 L798.3 386.5 L770.6 442.0 L743.0 497.6 L715.6 553.3 L688.2 609.0 L661.0 664.7 L634.0 720.6 L607.0 776.4 L580.2 832.4 L553.5 888.4 L539.3 918.2 L538.8 917.4 L503.6 868.9 L468.4 820.5 L433.1 772.2 L397.6 723.9 L362.1 675.7 L326.4 627.6 L290.7 579.6 L254.9 531.6 L218.9 483.7 L182.9 435.9 L146.8 388.1 L111.2 341.2 L112.1 341.1 L169.3 333.1 L226.5 325.0 L283.7 316.9 L340.9 308.6 L398.1 300.2 L455.2 291.7 L512.4 283.2 L569.5 274.5 L626.6 265.7 L683.7 256.8 L740.8 247.8 L797.8 238.7 L825.3 234.3 L825.0 235.2 L804.9 287.2 L784.9 339.2 L765.0 391.3 L745.2 443.4 L725.4 495.6 L705.7 547.7 L686.2 599.9 L666.7 652.2 L647.3 704.5 L627.9 756.8 L608.7 809.1 L589.6 861.5 L570.5 913.9 L570.1 914.1 L569.6 913.5 L535.7 871.6 L501.8 829.9 L467.8 788.1 L433.8 746.5 L399.7 704.8 L365.5 663.3 L331.3 621.8 L297.0 580.3 L262.7 538.9 L228.3 497.5 L193.8 456.2 L159.3 414.9 L124.7 373.7 L106.9 352.1 L107.7 351.9 L159.0 343.7 L210.2 335.3 L261.5 326.9 L312.7 318.4 L363.9 309.8 L415.1 301.2 L466.3 292.5 L517.5 283.7 L568.6 274.9 L619.8 266.0 L670.9 257.1 L722.1 248.0 L773.2 238.9 L821.9 230.2 L821.6 230.9 L804.0 277.8 L786.4 324.7 L768.8 371.7 L751.3 418.6 L733.9 465.6 L716.5 512.6 L699.2 559.6 L682.0 606.7 L664.8 653.7 L647.6 700.8 L630.5 747.9 L613.5 795.0 L596.5 842.2 L579.6 889.3 L570.5 914.0 L570.1 913.4 L539.5 876.0 L508.9 838.5 L478.3 801.1 L447.6 763.7 L416.9 726.4 L386.1 689.1 L355.4 651.8 L324.5 614.6 L293.6 577.3 L262.7 540.2 L231.8 503.0 L200.8 465.9 L169.8 428.8 L138.7 391.8 L107.6 354.8 L106.5 353.2 L107.2 353.1 L153.3 345.6 L199.3 338.0 L245.4 330.4 L291.4 322.8 L337.4 315.1 L383.4 307.4 L429.4 299.6 L475.4 291.8 L521.4 284.0 L567.4 276.1 L613.4 268.1 L659.4 260.2 L705.3 252.1 L751.3 244.1 L797.2 235.9 L822.9 231.5 L822.7 232.1 L806.8 274.2 L790.9 316.4 L775.0 358.5 L759.2 400.7 L743.4 442.9 L727.7 485.0 L712.0 527.2 L696.3 569.5 L680.7 611.7 L665.1 653.9 L649.5 696.2 L634.0 738.4 L618.5 780.7 L603.1 823.0 L587.7 865.3 L572.3 907.6 L569.9 914.1 L569.5 913.6 L542.0 879.9 L514.5 846.3 L487.0 812.7 L459.4 779.1 L431.9 745.5 L404.3 711.9 L376.7 678.4 L349.0 644.9 L321.3 611.4 L293.6 577.9 L265.9 544.4 L238.1 511.0 L210.4 477.6 L182.6 444.2 L154.7 410.8 L126.9 377.5 L106.5 353.1 L107.2 353.0 L148.7 346.7 L190.1 340.5 L231.6 334.2 L273.0 327.8 L314.5 321.5 L355.9 315.1 L397.3 308.7 L438.8 302.2 L480.2 295.8 L521.6 289.3 L563.1 282.7 L604.5 276.2 L645.9 269.6 L687.3 263.0 L728.7 256.3 L770.1 249.7 L811.5 242.9 L829.9 240.1 L829.7 240.7 L813.7 277.8 L797.6 315.0 L781.6 352.2 L765.7 389.4 L749.7 426.5 L733.8 463.7 L717.9 501.0 L702.0 538.2 L686.2 575.4 L670.4 612.6 L654.6 649.9 L638.8 687.1 L623.0 724.4 L607.3 761.7 L591.6 799.0 L575.9 836.3 L560.2 873.6 L544.6 910.9 L541.4 918.0 L541.0 917.4 L519.4 884.9 L497.7 852.5 L476.1 820.0 L454.4 787.5 L432.7 755.0 L410.9 722.6 L389.2 690.2 L367.4 657.8 L345.6 625.3 L323.8 593.0 L302.0 560.6 L280.2 528.2 L258.3 495.8 L236.5 463.5 L214.6 431.2 L192.6 398.9 L170.7 366.5 L148.8 334.3 L128.5 304.1 L129.1 304.1 L166.7 303.9 L204.4 303.5 L242.1 303.2 L279.8 302.9 L317.4 302.5 L355.1 302.1 L392.8 301.7 L430.5 301.3 L468.2 300.8 L505.8 300.4 L543.5 299.9 L581.2 299.4 L618.9 298.9 L656.5 298.3 L694.2 297.8 L731.9 297.2 L769.6 296.6 L807.2 296.0 L844.9 295.3 L866.6 295.0 L866.3 295.5 L846.7 326.1 L827.1 356.7 L807.5 387.4 L787.9 418.0 L768.3 448.7 L748.8 479.3 L729.3 510.0 L709.7 540.7 L690.2 571.4 L670.8 602.1 L651.3 632.8 L631.8 663.5 L612.4 694.2 L592.9 725.0 L573.5 755.7 L554.1 786.5 L534.7 817.2 L515.4 848.0 L496.0 878.8 L476.7 909.5 L470.6 919.0 L470.4 918.5 L456.2 886.4 L442.0 854.3 L427.8 822.2 L413.5 790.2 L399.3 758.1 L385.0 726.0 L370.7 694.0 L356.4 661.9 L342.1 629.9 L327.8 597.9 L313.5 565.8 L299.1 533.8 L284.8 501.8 L270.4 469.8 L256.0 437.8 L241.6 405.8 L227.2 373.8 L212.7 341.8 L198.3 309.8 L183.9 277.9 L169.4 245.9 L168.1 242.6 L168.6 242.7 L202.0 248.5 L235.4 254.2 L268.7 260.0 L302.1 265.7 L335.5 271.4 L368.8 277.1 L402.2 282.8 L435.6 288.5 L469.0 294.2 L502.4 299.8 L535.8 305.5 L569.2 311.1 L602.5 316.7 L635.9 322.3 L669.3 327.9 L702.7 333.5 L736.1 339.1 L769.5 344.6 L802.9 350.1 L836.3 355.7 L869.8 361.2 L898.1 366.1 L897.7 366.4 L875.2 390.1 L852.7 413.8 L830.3 437.6 L807.8 461.3 L785.3 485.0 L762.9 508.8 L740.4 532.5 L718.0 556.3 L695.6 580.0 L673.2 603.8 L650.7 627.6 L628.3 651.3 L605.9 675.1 L583.5 698.9 L561.2 722.7 L538.8 746.6 L516.4 770.4 L494.1 794.2 L471.7 818.1 L449.4 841.9 L427.1 865.7 L404.7 889.6 L389.8 905.3 L389.7 904.8 L383.0 874.0 L376.2 843.2 L369.4 812.4 L362.6 781.6 L355.8 750.9 L348.9 720.1 L342.1 689.3 L335.3 658.5 L328.4 627.7 L321.6 596.9 L314.7 566.2 L307.8 535.4 L301.0 504.6 L294.1 473.9 L287.2 443.1 L280.2 412.3 L273.3 381.6 L266.4 350.8 L259.5 320.0 L252.5 289.3 L245.5 258.5 L238.6 227.8 L231.6 197.0 L227.9 180.0 L228.4 180.2 L256.7 191.4 L284.9 202.6 L313.2 213.8 L341.5 225.0 L369.8 236.2 L398.1 247.4 L426.4 258.6 L454.7 269.7 L483.0 280.9 L511.4 292.0 L539.7 303.2 L568.0 314.3 L596.3 325.4 L624.6 336.5 L653.0 347.6 L681.3 358.7 L709.6 369.8 L738.0 380.9 L766.3 392.0 L794.7 403.1 L823.0 414.1 L851.4 425.2 L879.7 436.2 L908.1 447.3 L917.1 450.9 L916.7 451.2 L892.7 468.0 L868.6 484.8 L844.6 501.7 L820.5 518.5 L796.5 535.4 L772.4 552.2 L748.4 569.1 L724.4 586.0 L700.3 602.9 L676.3 619.7 L652.3 636.6 L628.3 653.5 L604.3 670.4 L580.3 687.3 L556.2 704.2 L532.2 721.2 L508.3 738.1 L484.3 755.0 L460.3 771.9 L436.3 788.9 L412.3 805.8 L388.3 822.8 L364.4 839.7 L340.4 856.7 L316.4 873.7 L312.9 876.0 L312.8 875.6 L312.1 847.2 L311.4 818.9 L310.7 790.6 L310.0 762.3 L309.3 733.9 L308.5 705.6 L307.8 677.3 L307.0 648.9 L306.3 620.6 L305.5 592.3 L304.7 564.0 L304.0 535.6 L303.2 507.3 L302.4 479.0 L301.6 450.7 L300.8 422.3 L300.0 394.0 L299.2 365.7 L298.4 337.4 L297.6 309.1 L296.7 280.7 L295.9 252.4 L295.1 224.1 L294.2 195.8 L293.3 167.4 L292.5 139.1 L292.5 134.9 L292.8 135.1 L315.9 149.7 L339.0 164.4 L362.1 179.0 L385.2 193.7 L408.3 208.3 L431.4 222.9 L454.5 237.6 L477.6 252.2 L500.7 266.8 L523.8 281.4 L546.9 296.0 L570.0 310.6 L593.2 325.2 L616.3 339.8 L639.4 354.4 L662.5 369.0 L685.7 383.6 L708.8 398.2 L731.9 412.7 L755.1 427.3 L778.2 441.9 L801.4 456.4 L824.5 471.0 L847.7 485.5 L870.8 500.1 L894.0 514.6 L917.1 529.1 L918.9 530.3 L918.5 530.4 L894.4 541.1 L870.3 551.8 L846.2 562.5 L822.0 573.2 L797.9 583.9 L773.8 594.6 L749.7 605.3 L725.6 616.0 L701.5 626.7 L677.3 637.5 L653.2 648.2 L629.1 658.9 L605.0 669.7 L580.9 680.4 L556.8 691.1 L532.7 701.9 L508.6 712.6 L484.5 723.4 L460.4 734.2 L436.4 744.9 L412.3 755.7 L388.2 766.5 L364.1 777.3 L340.0 788.0 L315.9 798.8 L291.8 809.6 L267.8 820.4 L243.7 831.2 L242.3 831.7 L242.4 831.3 L246.5 806.2 L250.7 781.0 L254.8 755.9 L258.9 730.8 L263.0 705.7 L267.1 680.5 L271.2 655.4 L275.3 630.3 L279.4 605.1 L283.5 580.0 L287.6 554.9 L291.6 529.7 L295.7 504.6 L299.8 479.5 L303.8 454.3 L307.9 429.2 L312.0 404.0 L316.0 378.9 L320.1 353.8 L324.1 328.6 L328.2 303.5 L332.2 278.3 L336.2 253.2 L340.3 228.1 L344.3 202.9 L348.3 177.8 L352.3 152.6 L356.4 127.5 L360.1 104.0 L360.4 104.2 L378.8 120.6 L397.1 136.9 L415.5 153.3 L433.8 169.6 L452.2 186.0 L470.5 202.3 L488.9 218.6 L507.2 235.0 L525.6 251.3 L544.0 267.6 L562.3 283.9 L580.7 300.3 L599.1 316.6 L617.4 332.9 L635.8 349.2 L654.2 365.5 L672.6 381.8 L690.9 398.1 L709.3 414.4 L727.7 430.7 L746.1 447.0 L764.5 463.3 L782.9 479.6 L801.3 495.9 L819.7 512.2 L838.1 528.5 L856.5 544.8 L874.9 561.0 L893.3 577.3 L909.8 592.0 L909.4 592.1 L886.6 598.6 L863.8 605.1 L841.0 611.6 L818.2 618.1 L795.4 624.6 L772.6 631.1 L749.8 637.6 L727.0 644.1 L704.2 650.6 L681.4 657.1 L658.6 663.6 L635.8 670.2 L613.0 676.7 L590.2 683.2 L567.4 689.7 L544.6 696.3 L521.8 702.8 L499.0 709.3 L476.2 715.9 L453.5 722.4 L430.7 729.0 L407.9 735.5 L385.1 742.1 L362.3 748.6 L339.5 755.2 L316.7 761.7 L293.9 768.3 L271.2 774.9 L248.4 781.4 L225.6 788.0 L202.8 794.6 L201.1 795.0 L201.2 794.7 L207.6 772.7 L213.9 750.7 L220.3 728.8 L226.7 706.8 L233.0 684.8 L239.4 662.8 L245.8 640.9 L252.1 618.9 L258.5 596.9 L264.8 574.9 L271.2 552.9 L277.5 530.9 L283.9 509.0 L290.2 487.0 L296.6 465.0 L302.9 443.0 L309.3 421.0 L315.6 399.0 L321.9 377.0 L328.3 355.1 L334.6 333.1 L340.9 311.1 L347.2 289.1 L353.5 267.1 L359.9 245.1 L366.2 223.1 L372.5 201.1 L378.8 179.1 L385.1 157.1 L391.4 135.1 L397.7 113.1 L404.0 91.1 L404.2 91.1 L404.4 91.3 L419.1 107.8 L433.9 124.2 L448.6 140.7 L463.3 157.1 L478.1 173.6 L492.8 190.0 L507.5 206.5 L522.3 222.9 L537.0 239.4 L551.8 255.8 L566.5 272.2 L581.2 288.7 L596.0 305.1 L610.7 321.5 L625.5 338.0 L640.2 354.4 L655.0 370.8 L669.8 387.2 L684.5 403.7 L699.3 420.1 L714.0 436.5 L728.8 452.9 L743.6 469.4 L758.3 485.8 L773.1 502.2 L787.9 518.6 L802.6 535.0 L817.4 551.4 L832.2 567.8 L847.0 584.2 L861.8 600.6 L876.5 617.0 L891.3 633.4 L896.3 639.1 L896.0 639.1 L874.9 642.5 L853.9 645.9 L832.9 649.3 L811.8 652.7 L790.8 656.1 L769.8 659.6 L748.7 663.0 L727.7 666.4 L706.7 669.8 L685.7 673.2 L664.6 676.7 L643.6 680.1 L622.6 683.5 L601.5 686.9 L580.5 690.4 L559.5 693.8 L538.4 697.2 L517.4 700.7 L496.4 704.1 L475.4 707.6 L454.3 711.0 L433.3 714.5 L412.3 717.9 L391.2 721.4 L370.2 724.8 L349.2 728.3 L328.2 731.7 L307.1 735.2 L286.1 738.6 L265.1 742.1 L244.1 745.6 L223.0 749.0 L202.0 752.5 L181.0 756.0 L168.6 758.0');animation:fEm 140s linear infinite}
+  @keyframes fEm{to{offset-distance:100%}}
+  @media (prefers-reduced-motion: reduce){
+    .geometry-fig .gp{animation:none;stroke-dashoffset:0}
+    .geometry-fig .gm{display:none}
+  }
+
+  /* GENESIS — the seal draws itself, every cycle */
+  /* THE SENTENCE IN PLACE OF THE SEAL */
+  .seal-hero { position: relative; }
+  .hero-slogan {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(1.9rem, 4.8vw, 3.2rem);
+    letter-spacing: 0.06em;
+    color: rgba(245, 241, 234, 0.95);
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-slogan { position: static; margin-top: 2.2rem; }
+    }
+
+  .fp .gp{stroke-dasharray:2182;stroke-dashoffset:2182;animation:fpd 8s linear infinite}
+  @keyframes fpd{to{stroke-dashoffset:0}}
+  .fp .gm{offset-path:path('M136.3 710.0 L500.0 80.0 L863.7 710.0 L136.3 710.0');animation:fpm 8s linear infinite}
+  @keyframes fpm{to{offset-distance:100%}}
+  .fl .gp{stroke-dasharray:53646;stroke-dashoffset:53646;animation:fld 150s linear infinite}
+  @keyframes fld{to{stroke-dashoffset:0}}
+  .fl .gm{offset-path:path('M156.0 740.9 L500.0 80.0 L844.0 740.9 L105.3 643.6 L608.7 94.3 L770.0 821.7 L81.6 536.6 L710.0 136.3 L677.5 880.6 L86.4 427.1 L797.0 203.0 L572.9 913.6 L119.4 322.5 L863.7 290.0 L463.4 918.4 L178.3 230.0 L905.7 391.3 L356.4 894.7 L259.1 156.0 L920.0 500.0 L259.1 844.0 L356.4 105.3 L905.7 608.7 L178.3 770.0 L463.4 81.6 L863.7 710.0 L119.4 677.5 L572.9 86.4 L797.0 797.0 L86.4 572.9 L677.5 119.4 L710.0 863.7 L81.6 463.4 L770.0 178.3 L608.7 905.7 L105.3 356.4 L844.0 259.1 L500.0 920.0 L156.0 259.1 L894.7 356.4 L391.3 905.7 L230.0 178.3 L918.4 463.4 L290.0 863.7 L322.5 119.4 L913.6 572.9 L203.0 797.0 L427.1 86.4 L880.6 677.5 L136.3 710.0 L536.6 81.6 L821.7 770.0 L94.3 608.7 L643.6 105.3 L740.9 844.0 L80.0 500.0 L740.9 156.0 L643.6 894.7 L94.3 391.3 L821.7 230.0 L536.6 918.4 L136.3 290.0 L880.6 322.5 L427.1 913.6 L203.0 203.0 L913.6 427.1 L322.5 880.6 L290.0 136.3 L918.4 536.6 L230.0 821.7 L391.3 94.3 L894.7 643.6 L156.0 740.9');animation:flm 150s linear infinite}
+  @keyframes flm{to{offset-distance:100%}}
+
+  /* HIDDEN PATH v2 — ghost + living figures */
+  .geometry-fig .gg{opacity:0.15}
+  .g72 .gp{stroke-dasharray:53646;stroke-dashoffset:53646;animation:g72d 150s linear infinite}
+  @keyframes g72d{to{stroke-dashoffset:0}}
+  .g72 .gm{offset-path:path('M156.0 740.9 L500.0 80.0 L844.0 740.9 L105.3 643.6 L608.7 94.3 L770.0 821.7 L81.6 536.6 L710.0 136.3 L677.5 880.6 L86.4 427.1 L797.0 203.0 L572.9 913.6 L119.4 322.5 L863.7 290.0 L463.4 918.4 L178.3 230.0 L905.7 391.3 L356.4 894.7 L259.1 156.0 L920.0 500.0 L259.1 844.0 L356.4 105.3 L905.7 608.7 L178.3 770.0 L463.4 81.6 L863.7 710.0 L119.4 677.5 L572.9 86.4 L797.0 797.0 L86.4 572.9 L677.5 119.4 L710.0 863.7 L81.6 463.4 L770.0 178.3 L608.7 905.7 L105.3 356.4 L844.0 259.1 L500.0 920.0 L156.0 259.1 L894.7 356.4 L391.3 905.7 L230.0 178.3 L918.4 463.4 L290.0 863.7 L322.5 119.4 L913.6 572.9 L203.0 797.0 L427.1 86.4 L880.6 677.5 L136.3 710.0 L536.6 81.6 L821.7 770.0 L94.3 608.7 L643.6 105.3 L740.9 844.0 L80.0 500.0 L740.9 156.0 L643.6 894.7 L94.3 391.3 L821.7 230.0 L536.6 918.4 L136.3 290.0 L880.6 322.5 L427.1 913.6 L203.0 203.0 L913.6 427.1 L322.5 880.6 L290.0 136.3 L918.4 536.6 L230.0 821.7 L391.3 94.3 L894.7 643.6 L156.0 740.9');animation:g72m 150s linear infinite}
+  @keyframes g72m{to{offset-distance:100%}}
+  .g7 .gp{stroke-dasharray:4597;stroke-dashoffset:4597;animation:g7d 16s linear infinite}
+  @keyframes g7d{to{stroke-dashoffset:0}}
+  .g7 .gm{offset-path:path('M90.5 593.5 L500.0 80.0 L909.5 593.5 L317.8 878.4 L171.6 238.1 L828.4 238.1 L682.2 878.4 L90.5 593.5');animation:g7m 16s linear infinite}
+  @keyframes g7m{to{offset-distance:100%}}
+  .gp3 .gp{stroke-dasharray:2182;stroke-dashoffset:2182;animation:gp3d 8s linear infinite}
+  @keyframes gp3d{to{stroke-dashoffset:0}}
+  .gp3 .gm{offset-path:path('M136.3 710.0 L500.0 80.0 L863.7 710.0 L136.3 710.0');animation:gp3m 8s linear infinite}
+  @keyframes gp3m{to{offset-distance:100%}}
+  .gl72 .gp{stroke-dasharray:53646;stroke-dashoffset:53646;animation:gl72d 150s linear infinite}
+  @keyframes gl72d{to{stroke-dashoffset:0}}
+  .gl72 .gm{offset-path:path('M156.0 740.9 L500.0 80.0 L844.0 740.9 L105.3 643.6 L608.7 94.3 L770.0 821.7 L81.6 536.6 L710.0 136.3 L677.5 880.6 L86.4 427.1 L797.0 203.0 L572.9 913.6 L119.4 322.5 L863.7 290.0 L463.4 918.4 L178.3 230.0 L905.7 391.3 L356.4 894.7 L259.1 156.0 L920.0 500.0 L259.1 844.0 L356.4 105.3 L905.7 608.7 L178.3 770.0 L463.4 81.6 L863.7 710.0 L119.4 677.5 L572.9 86.4 L797.0 797.0 L86.4 572.9 L677.5 119.4 L710.0 863.7 L81.6 463.4 L770.0 178.3 L608.7 905.7 L105.3 356.4 L844.0 259.1 L500.0 920.0 L156.0 259.1 L894.7 356.4 L391.3 905.7 L230.0 178.3 L918.4 463.4 L290.0 863.7 L322.5 119.4 L913.6 572.9 L203.0 797.0 L427.1 86.4 L880.6 677.5 L136.3 710.0 L536.6 81.6 L821.7 770.0 L94.3 608.7 L643.6 105.3 L740.9 844.0 L80.0 500.0 L740.9 156.0 L643.6 894.7 L94.3 391.3 L821.7 230.0 L536.6 918.4 L136.3 290.0 L880.6 322.5 L427.1 913.6 L203.0 203.0 L913.6 427.1 L322.5 880.6 L290.0 136.3 L918.4 536.6 L230.0 821.7 L391.3 94.3 L894.7 643.6 L156.0 740.9');animation:gl72m 150s linear infinite}
+  @keyframes gl72m{to{offset-distance:100%}}
+  .gcn .gp{stroke-dasharray:1260;stroke-dashoffset:1260;animation:gcnd 14s linear infinite}
+  @keyframes gcnd{to{stroke-dashoffset:0}}
+  .gcn .gm{offset-path:path('M500.0 500.0 L630.3 100.7 L369.7 899.3 L630.3 100.7 L369.7 899.3 L630.3 100.7 L369.7 899.3 L630.3 100.7 L369.7 899.3');animation:gcnm 14s linear infinite}
+  @keyframes gcnm{to{offset-distance:100%}}
+  .gst .gp{stroke-dasharray:5348;stroke-dashoffset:5348;animation:gstd 17s linear infinite}
+  @keyframes gstd{to{stroke-dashoffset:0}}
+  .gst .gm{offset-path:path('M156.0 259.1 L500.0 920.0 L844.0 259.1 L156.0 740.9 L500.0 80.0 L844.0 740.9 L156.0 259.1 L844.0 259.1');animation:gstm 17s linear infinite}
+  @keyframes gstm{to{offset-distance:100%}}
+  .gid .gp{stroke-dasharray:53646;stroke-dashoffset:53646;animation:gidd 150s linear infinite}
+  @keyframes gidd{to{stroke-dashoffset:0}}
+  .gid .gm{offset-path:path('M156.0 740.9 L500.0 80.0 L844.0 740.9 L105.3 643.6 L608.7 94.3 L770.0 821.7 L81.6 536.6 L710.0 136.3 L677.5 880.6 L86.4 427.1 L797.0 203.0 L572.9 913.6 L119.4 322.5 L863.7 290.0 L463.4 918.4 L178.3 230.0 L905.7 391.3 L356.4 894.7 L259.1 156.0 L920.0 500.0 L259.1 844.0 L356.4 105.3 L905.7 608.7 L178.3 770.0 L463.4 81.6 L863.7 710.0 L119.4 677.5 L572.9 86.4 L797.0 797.0 L86.4 572.9 L677.5 119.4 L710.0 863.7 L81.6 463.4 L770.0 178.3 L608.7 905.7 L105.3 356.4 L844.0 259.1 L500.0 920.0 L156.0 259.1 L894.7 356.4 L391.3 905.7 L230.0 178.3 L918.4 463.4 L290.0 863.7 L322.5 119.4 L913.6 572.9 L203.0 797.0 L427.1 86.4 L880.6 677.5 L136.3 710.0 L536.6 81.6 L821.7 770.0 L94.3 608.7 L643.6 105.3 L740.9 844.0 L80.0 500.0 L740.9 156.0 L643.6 894.7 L94.3 391.3 L821.7 230.0 L536.6 918.4 L136.3 290.0 L880.6 322.5 L427.1 913.6 L203.0 203.0 L913.6 427.1 L322.5 880.6 L290.0 136.3 L918.4 536.6 L230.0 821.7 L391.3 94.3 L894.7 643.6 L156.0 740.9');animation:gidm 150s linear infinite}
+  @keyframes gidm{to{offset-distance:100%}}
+  .gem .gp{stroke-dasharray:39265;stroke-dashoffset:39265;animation:gemd 140s linear infinite}
+  @keyframes gemd{to{stroke-dashoffset:0}}
+  .gem .gm{offset-path:path('M156.0 740.9 L157.0 739.0 L220.3 613.2 L280.5 485.9 L337.4 357.1 L391.0 226.9 L441.3 95.4 L445.9 83.5 L447.1 85.2 L527.2 195.0 L609.7 302.9 L694.7 408.9 L782.1 513.0 L871.8 615.0 L895.4 641.6 L893.4 641.9 L763.9 662.6 L634.9 686.1 L506.4 712.1 L378.5 740.8 L251.2 772.2 L193.0 786.6 L193.6 784.7 L231.6 664.0 L267.5 542.7 L301.0 420.7 L332.4 298.1 L361.4 175.0 L378.5 98.0 L379.8 99.3 L468.0 183.8 L557.5 266.8 L648.4 348.4 L740.6 428.4 L834.2 506.8 L913.8 571.8 L912.1 572.4 L801.4 612.8 L691.3 654.8 L581.9 698.5 L473.1 743.8 L365.1 790.7 L257.7 839.2 L254.4 840.7 L254.6 838.9 L265.8 725.8 L275.5 612.5 L283.7 499.1 L290.4 385.6 L295.5 272.0 L299.1 158.4 L300.1 130.6 L301.6 131.5 L394.9 189.3 L488.9 245.9 L583.5 301.4 L678.9 355.7 L774.8 408.8 L871.5 460.8 L919.8 486.4 L918.4 487.3 L828.6 543.4 L739.4 600.5 L650.9 658.6 L563.0 717.6 L475.8 777.6 L389.2 838.6 L327.4 882.9 L327.3 881.3 L317.4 779.6 L306.4 678.0 L294.5 576.5 L281.6 475.2 L267.8 374.0 L252.9 272.9 L237.3 172.3 L238.7 172.9 L330.6 208.7 L422.8 243.7 L515.2 277.9 L608.0 311.3 L701.1 343.8 L794.4 375.6 L888.1 406.5 L911.1 414.1 L910.0 415.1 L838.6 478.0 L767.8 541.5 L697.4 605.6 L627.6 670.2 L558.2 735.3 L489.4 801.1 L421.1 867.3 L384.0 903.7 L383.7 902.3 L362.7 812.9 L341.0 723.7 L318.8 634.6 L295.8 545.7 L272.3 456.9 L248.1 368.4 L223.2 280.0 L201.7 204.4 L203.0 204.8 L288.4 228.3 L374.0 251.3 L459.7 273.7 L545.6 295.6 L631.6 316.9 L717.7 337.7 L804.0 357.9 L890.3 377.6 L902.8 381.0 L901.9 381.9 L842.8 443.8 L784.1 506.0 L725.8 568.5 L667.9 631.4 L610.3 694.6 L553.1 758.1 L496.2 822.0 L439.8 886.2 L417.0 911.7 L416.6 910.5 L391.0 832.1 L365.0 753.8 L338.6 675.6 L311.8 597.6 L284.6 519.7 L256.9 441.9 L228.9 364.3 L200.5 286.9 L179.1 229.1 L180.3 229.3 L258.5 244.4 L336.7 259.2 L415.0 273.6 L493.4 287.7 L571.8 301.3 L650.3 314.6 L728.9 327.6 L807.5 340.1 L886.2 352.3 L893.8 354.0 L893.0 354.9 L843.4 413.6 L794.0 472.5 L744.9 531.5 L696.0 590.8 L647.4 650.3 L599.0 710.0 L550.9 769.9 L503.1 830.0 L455.4 890.3 L435.6 915.0 L435.1 913.9 L408.2 844.9 L381.1 775.9 L353.6 707.0 L325.9 638.2 L298.0 569.5 L269.8 501.0 L241.3 432.5 L212.6 364.1 L183.6 295.9 L163.7 248.5 L164.8 248.6 L235.9 256.7 L307.0 264.6 L378.1 272.3 L449.3 279.7 L520.5 286.9 L591.7 293.8 L662.9 300.5 L734.2 307.0 L805.5 313.2 L876.8 319.1 L879.4 319.8 L878.7 320.6 L839.7 377.6 L800.8 434.6 L762.1 491.8 L723.6 549.1 L685.2 606.5 L647.0 664.1 L609.0 721.7 L571.2 779.5 L533.6 837.4 L496.1 895.4 L480.4 919.5 L479.9 918.6 L448.4 859.9 L416.8 801.2 L385.0 742.7 L353.1 684.2 L321.0 625.8 L288.7 567.5 L256.3 509.3 L223.7 451.2 L190.9 393.2 L158.0 335.3 L134.4 293.2 L135.4 293.2 L199.7 292.4 L264.0 291.4 L328.3 290.2 L392.6 288.9 L456.9 287.4 L521.2 285.8 L585.4 284.0 L649.7 282.1 L714.0 279.9 L778.2 277.7 L842.5 275.2 L854.5 274.8 L854.1 275.6 L826.1 331.0 L798.3 386.5 L770.6 442.0 L743.0 497.6 L715.6 553.3 L688.2 609.0 L661.0 664.7 L634.0 720.6 L607.0 776.4 L580.2 832.4 L553.5 888.4 L539.3 918.2 L538.8 917.4 L503.6 868.9 L468.4 820.5 L433.1 772.2 L397.6 723.9 L362.1 675.7 L326.4 627.6 L290.7 579.6 L254.9 531.6 L218.9 483.7 L182.9 435.9 L146.8 388.1 L111.2 341.2 L112.1 341.1 L169.3 333.1 L226.5 325.0 L283.7 316.9 L340.9 308.6 L398.1 300.2 L455.2 291.7 L512.4 283.2 L569.5 274.5 L626.6 265.7 L683.7 256.8 L740.8 247.8 L797.8 238.7 L825.3 234.3 L825.0 235.2 L804.9 287.2 L784.9 339.2 L765.0 391.3 L745.2 443.4 L725.4 495.6 L705.7 547.7 L686.2 599.9 L666.7 652.2 L647.3 704.5 L627.9 756.8 L608.7 809.1 L589.6 861.5 L570.5 913.9 L570.1 914.1 L569.6 913.5 L535.7 871.6 L501.8 829.9 L467.8 788.1 L433.8 746.5 L399.7 704.8 L365.5 663.3 L331.3 621.8 L297.0 580.3 L262.7 538.9 L228.3 497.5 L193.8 456.2 L159.3 414.9 L124.7 373.7 L106.9 352.1 L107.7 351.9 L159.0 343.7 L210.2 335.3 L261.5 326.9 L312.7 318.4 L363.9 309.8 L415.1 301.2 L466.3 292.5 L517.5 283.7 L568.6 274.9 L619.8 266.0 L670.9 257.1 L722.1 248.0 L773.2 238.9 L821.9 230.2 L821.6 230.9 L804.0 277.8 L786.4 324.7 L768.8 371.7 L751.3 418.6 L733.9 465.6 L716.5 512.6 L699.2 559.6 L682.0 606.7 L664.8 653.7 L647.6 700.8 L630.5 747.9 L613.5 795.0 L596.5 842.2 L579.6 889.3 L570.5 914.0 L570.1 913.4 L539.5 876.0 L508.9 838.5 L478.3 801.1 L447.6 763.7 L416.9 726.4 L386.1 689.1 L355.4 651.8 L324.5 614.6 L293.6 577.3 L262.7 540.2 L231.8 503.0 L200.8 465.9 L169.8 428.8 L138.7 391.8 L107.6 354.8 L106.5 353.2 L107.2 353.1 L153.3 345.6 L199.3 338.0 L245.4 330.4 L291.4 322.8 L337.4 315.1 L383.4 307.4 L429.4 299.6 L475.4 291.8 L521.4 284.0 L567.4 276.1 L613.4 268.1 L659.4 260.2 L705.3 252.1 L751.3 244.1 L797.2 235.9 L822.9 231.5 L822.7 232.1 L806.8 274.2 L790.9 316.4 L775.0 358.5 L759.2 400.7 L743.4 442.9 L727.7 485.0 L712.0 527.2 L696.3 569.5 L680.7 611.7 L665.1 653.9 L649.5 696.2 L634.0 738.4 L618.5 780.7 L603.1 823.0 L587.7 865.3 L572.3 907.6 L569.9 914.1 L569.5 913.6 L542.0 879.9 L514.5 846.3 L487.0 812.7 L459.4 779.1 L431.9 745.5 L404.3 711.9 L376.7 678.4 L349.0 644.9 L321.3 611.4 L293.6 577.9 L265.9 544.4 L238.1 511.0 L210.4 477.6 L182.6 444.2 L154.7 410.8 L126.9 377.5 L106.5 353.1 L107.2 353.0 L148.7 346.7 L190.1 340.5 L231.6 334.2 L273.0 327.8 L314.5 321.5 L355.9 315.1 L397.3 308.7 L438.8 302.2 L480.2 295.8 L521.6 289.3 L563.1 282.7 L604.5 276.2 L645.9 269.6 L687.3 263.0 L728.7 256.3 L770.1 249.7 L811.5 242.9 L829.9 240.1 L829.7 240.7 L813.7 277.8 L797.6 315.0 L781.6 352.2 L765.7 389.4 L749.7 426.5 L733.8 463.7 L717.9 501.0 L702.0 538.2 L686.2 575.4 L670.4 612.6 L654.6 649.9 L638.8 687.1 L623.0 724.4 L607.3 761.7 L591.6 799.0 L575.9 836.3 L560.2 873.6 L544.6 910.9 L541.4 918.0 L541.0 917.4 L519.4 884.9 L497.7 852.5 L476.1 820.0 L454.4 787.5 L432.7 755.0 L410.9 722.6 L389.2 690.2 L367.4 657.8 L345.6 625.3 L323.8 593.0 L302.0 560.6 L280.2 528.2 L258.3 495.8 L236.5 463.5 L214.6 431.2 L192.6 398.9 L170.7 366.5 L148.8 334.3 L128.5 304.1 L129.1 304.1 L166.7 303.9 L204.4 303.5 L242.1 303.2 L279.8 302.9 L317.4 302.5 L355.1 302.1 L392.8 301.7 L430.5 301.3 L468.2 300.8 L505.8 300.4 L543.5 299.9 L581.2 299.4 L618.9 298.9 L656.5 298.3 L694.2 297.8 L731.9 297.2 L769.6 296.6 L807.2 296.0 L844.9 295.3 L866.6 295.0 L866.3 295.5 L846.7 326.1 L827.1 356.7 L807.5 387.4 L787.9 418.0 L768.3 448.7 L748.8 479.3 L729.3 510.0 L709.7 540.7 L690.2 571.4 L670.8 602.1 L651.3 632.8 L631.8 663.5 L612.4 694.2 L592.9 725.0 L573.5 755.7 L554.1 786.5 L534.7 817.2 L515.4 848.0 L496.0 878.8 L476.7 909.5 L470.6 919.0 L470.4 918.5 L456.2 886.4 L442.0 854.3 L427.8 822.2 L413.5 790.2 L399.3 758.1 L385.0 726.0 L370.7 694.0 L356.4 661.9 L342.1 629.9 L327.8 597.9 L313.5 565.8 L299.1 533.8 L284.8 501.8 L270.4 469.8 L256.0 437.8 L241.6 405.8 L227.2 373.8 L212.7 341.8 L198.3 309.8 L183.9 277.9 L169.4 245.9 L168.1 242.6 L168.6 242.7 L202.0 248.5 L235.4 254.2 L268.7 260.0 L302.1 265.7 L335.5 271.4 L368.8 277.1 L402.2 282.8 L435.6 288.5 L469.0 294.2 L502.4 299.8 L535.8 305.5 L569.2 311.1 L602.5 316.7 L635.9 322.3 L669.3 327.9 L702.7 333.5 L736.1 339.1 L769.5 344.6 L802.9 350.1 L836.3 355.7 L869.8 361.2 L898.1 366.1 L897.7 366.4 L875.2 390.1 L852.7 413.8 L830.3 437.6 L807.8 461.3 L785.3 485.0 L762.9 508.8 L740.4 532.5 L718.0 556.3 L695.6 580.0 L673.2 603.8 L650.7 627.6 L628.3 651.3 L605.9 675.1 L583.5 698.9 L561.2 722.7 L538.8 746.6 L516.4 770.4 L494.1 794.2 L471.7 818.1 L449.4 841.9 L427.1 865.7 L404.7 889.6 L389.8 905.3 L389.7 904.8 L383.0 874.0 L376.2 843.2 L369.4 812.4 L362.6 781.6 L355.8 750.9 L348.9 720.1 L342.1 689.3 L335.3 658.5 L328.4 627.7 L321.6 596.9 L314.7 566.2 L307.8 535.4 L301.0 504.6 L294.1 473.9 L287.2 443.1 L280.2 412.3 L273.3 381.6 L266.4 350.8 L259.5 320.0 L252.5 289.3 L245.5 258.5 L238.6 227.8 L231.6 197.0 L227.9 180.0 L228.4 180.2 L256.7 191.4 L284.9 202.6 L313.2 213.8 L341.5 225.0 L369.8 236.2 L398.1 247.4 L426.4 258.6 L454.7 269.7 L483.0 280.9 L511.4 292.0 L539.7 303.2 L568.0 314.3 L596.3 325.4 L624.6 336.5 L653.0 347.6 L681.3 358.7 L709.6 369.8 L738.0 380.9 L766.3 392.0 L794.7 403.1 L823.0 414.1 L851.4 425.2 L879.7 436.2 L908.1 447.3 L917.1 450.9 L916.7 451.2 L892.7 468.0 L868.6 484.8 L844.6 501.7 L820.5 518.5 L796.5 535.4 L772.4 552.2 L748.4 569.1 L724.4 586.0 L700.3 602.9 L676.3 619.7 L652.3 636.6 L628.3 653.5 L604.3 670.4 L580.3 687.3 L556.2 704.2 L532.2 721.2 L508.3 738.1 L484.3 755.0 L460.3 771.9 L436.3 788.9 L412.3 805.8 L388.3 822.8 L364.4 839.7 L340.4 856.7 L316.4 873.7 L312.9 876.0 L312.8 875.6 L312.1 847.2 L311.4 818.9 L310.7 790.6 L310.0 762.3 L309.3 733.9 L308.5 705.6 L307.8 677.3 L307.0 648.9 L306.3 620.6 L305.5 592.3 L304.7 564.0 L304.0 535.6 L303.2 507.3 L302.4 479.0 L301.6 450.7 L300.8 422.3 L300.0 394.0 L299.2 365.7 L298.4 337.4 L297.6 309.1 L296.7 280.7 L295.9 252.4 L295.1 224.1 L294.2 195.8 L293.3 167.4 L292.5 139.1 L292.5 134.9 L292.8 135.1 L315.9 149.7 L339.0 164.4 L362.1 179.0 L385.2 193.7 L408.3 208.3 L431.4 222.9 L454.5 237.6 L477.6 252.2 L500.7 266.8 L523.8 281.4 L546.9 296.0 L570.0 310.6 L593.2 325.2 L616.3 339.8 L639.4 354.4 L662.5 369.0 L685.7 383.6 L708.8 398.2 L731.9 412.7 L755.1 427.3 L778.2 441.9 L801.4 456.4 L824.5 471.0 L847.7 485.5 L870.8 500.1 L894.0 514.6 L917.1 529.1 L918.9 530.3 L918.5 530.4 L894.4 541.1 L870.3 551.8 L846.2 562.5 L822.0 573.2 L797.9 583.9 L773.8 594.6 L749.7 605.3 L725.6 616.0 L701.5 626.7 L677.3 637.5 L653.2 648.2 L629.1 658.9 L605.0 669.7 L580.9 680.4 L556.8 691.1 L532.7 701.9 L508.6 712.6 L484.5 723.4 L460.4 734.2 L436.4 744.9 L412.3 755.7 L388.2 766.5 L364.1 777.3 L340.0 788.0 L315.9 798.8 L291.8 809.6 L267.8 820.4 L243.7 831.2 L242.3 831.7 L242.4 831.3 L246.5 806.2 L250.7 781.0 L254.8 755.9 L258.9 730.8 L263.0 705.7 L267.1 680.5 L271.2 655.4 L275.3 630.3 L279.4 605.1 L283.5 580.0 L287.6 554.9 L291.6 529.7 L295.7 504.6 L299.8 479.5 L303.8 454.3 L307.9 429.2 L312.0 404.0 L316.0 378.9 L320.1 353.8 L324.1 328.6 L328.2 303.5 L332.2 278.3 L336.2 253.2 L340.3 228.1 L344.3 202.9 L348.3 177.8 L352.3 152.6 L356.4 127.5 L360.1 104.0 L360.4 104.2 L378.8 120.6 L397.1 136.9 L415.5 153.3 L433.8 169.6 L452.2 186.0 L470.5 202.3 L488.9 218.6 L507.2 235.0 L525.6 251.3 L544.0 267.6 L562.3 283.9 L580.7 300.3 L599.1 316.6 L617.4 332.9 L635.8 349.2 L654.2 365.5 L672.6 381.8 L690.9 398.1 L709.3 414.4 L727.7 430.7 L746.1 447.0 L764.5 463.3 L782.9 479.6 L801.3 495.9 L819.7 512.2 L838.1 528.5 L856.5 544.8 L874.9 561.0 L893.3 577.3 L909.8 592.0 L909.4 592.1 L886.6 598.6 L863.8 605.1 L841.0 611.6 L818.2 618.1 L795.4 624.6 L772.6 631.1 L749.8 637.6 L727.0 644.1 L704.2 650.6 L681.4 657.1 L658.6 663.6 L635.8 670.2 L613.0 676.7 L590.2 683.2 L567.4 689.7 L544.6 696.3 L521.8 702.8 L499.0 709.3 L476.2 715.9 L453.5 722.4 L430.7 729.0 L407.9 735.5 L385.1 742.1 L362.3 748.6 L339.5 755.2 L316.7 761.7 L293.9 768.3 L271.2 774.9 L248.4 781.4 L225.6 788.0 L202.8 794.6 L201.1 795.0 L201.2 794.7 L207.6 772.7 L213.9 750.7 L220.3 728.8 L226.7 706.8 L233.0 684.8 L239.4 662.8 L245.8 640.9 L252.1 618.9 L258.5 596.9 L264.8 574.9 L271.2 552.9 L277.5 530.9 L283.9 509.0 L290.2 487.0 L296.6 465.0 L302.9 443.0 L309.3 421.0 L315.6 399.0 L321.9 377.0 L328.3 355.1 L334.6 333.1 L340.9 311.1 L347.2 289.1 L353.5 267.1 L359.9 245.1 L366.2 223.1 L372.5 201.1 L378.8 179.1 L385.1 157.1 L391.4 135.1 L397.7 113.1 L404.0 91.1 L404.2 91.1 L404.4 91.3 L419.1 107.8 L433.9 124.2 L448.6 140.7 L463.3 157.1 L478.1 173.6 L492.8 190.0 L507.5 206.5 L522.3 222.9 L537.0 239.4 L551.8 255.8 L566.5 272.2 L581.2 288.7 L596.0 305.1 L610.7 321.5 L625.5 338.0 L640.2 354.4 L655.0 370.8 L669.8 387.2 L684.5 403.7 L699.3 420.1 L714.0 436.5 L728.8 452.9 L743.6 469.4 L758.3 485.8 L773.1 502.2 L787.9 518.6 L802.6 535.0 L817.4 551.4 L832.2 567.8 L847.0 584.2 L861.8 600.6 L876.5 617.0 L891.3 633.4 L896.3 639.1 L896.0 639.1 L874.9 642.5 L853.9 645.9 L832.9 649.3 L811.8 652.7 L790.8 656.1 L769.8 659.6 L748.7 663.0 L727.7 666.4 L706.7 669.8 L685.7 673.2 L664.6 676.7 L643.6 680.1 L622.6 683.5 L601.5 686.9 L580.5 690.4 L559.5 693.8 L538.4 697.2 L517.4 700.7 L496.4 704.1 L475.4 707.6 L454.3 711.0 L433.3 714.5 L412.3 717.9 L391.2 721.4 L370.2 724.8 L349.2 728.3 L328.2 731.7 L307.1 735.2 L286.1 738.6 L265.1 742.1 L244.1 745.6 L223.0 749.0 L202.0 752.5 L181.0 756.0 L168.6 758.0');animation:gemm 140s linear infinite}
+  @keyframes gemm{to{offset-distance:100%}}
+  @media (prefers-reduced-motion: reduce){
+    .geometry-fig .gp{animation:none;stroke-dashoffset:0}
+    .geometry-fig .gm{display:none}
+    .geometry-fig .gg{display:none}
+  }
+
+  /* ===== MASTER LITURGY — one 190s cycle: the genesis spells A·V·O·V·A, letters complete ===== */
+  .seal-glyph .st-a{stroke-dasharray:2271;stroke-dashoffset:2271;opacity:0;animation:loopA 190s linear infinite}
+  @keyframes loopA{0%,0.32%{stroke-dashoffset:2271;opacity:0;animation-timing-function:ease-in-out}0.34%{opacity:1}2.11%{stroke-dashoffset:0;opacity:1}93.68%{stroke-dashoffset:0;opacity:1}93.95%,100%{stroke-dashoffset:2271;opacity:0}}
+  .seal-glyph .st-bar{stroke-dasharray:666;stroke-dashoffset:666;opacity:0;animation:loopB 190s linear infinite}
+  @keyframes loopB{0%,2.32%{stroke-dashoffset:666;opacity:0;animation-timing-function:ease-in-out}2.34%{opacity:1}2.79%{stroke-dashoffset:0;opacity:1}93.68%{stroke-dashoffset:0;opacity:1}93.95%,100%{stroke-dashoffset:666;opacity:0}}
+  .seal-glyph .st-v{stroke-dasharray:2271;stroke-dashoffset:2271;opacity:0;animation:loopV 190s linear infinite}
+  @keyframes loopV{0%,3.05%{stroke-dashoffset:2271;opacity:0;animation-timing-function:ease-in-out}3.08%{opacity:1}4.84%{stroke-dashoffset:0;opacity:1}93.68%{stroke-dashoffset:0;opacity:1}93.95%,100%{stroke-dashoffset:2271;opacity:0}}
+  .seal-glyph .st-o{stroke-dasharray:4027;stroke-dashoffset:4027;animation:loopO 190s linear infinite}
+  @keyframes loopO{0%,5.16%{stroke-dashoffset:4027;animation-timing-function:ease-in-out}7.68%{stroke-dashoffset:0}93.68%{stroke-dashoffset:0}93.95%,100%{stroke-dashoffset:4027}}
+  .seal-glyph .rt-v{stroke-dasharray:2271;stroke-dashoffset:2271;opacity:0;animation:rtV 190s linear infinite}
+  @keyframes rtV{0%,8.00%{stroke-dashoffset:2271;opacity:0;animation-timing-function:ease-in-out}8.03%{opacity:0.85}9.26%{stroke-dashoffset:0;opacity:0.85}9.68%{stroke-dashoffset:0;opacity:0}100%{opacity:0}}
+  .seal-glyph .rt-a{stroke-dasharray:2271;stroke-dashoffset:2271;opacity:0;animation:rtA 190s linear infinite}
+  @keyframes rtA{0%,9.79%{stroke-dashoffset:2271;opacity:0;animation-timing-function:ease-in-out}9.82%{opacity:0.85}11.05%{stroke-dashoffset:0;opacity:0.85}11.47%{stroke-dashoffset:0;opacity:0}100%{opacity:0}}
+  .seal-glyph .rt-bar{stroke-dasharray:666;stroke-dashoffset:666;opacity:0;animation:rtB 190s linear infinite}
+  @keyframes rtB{0%,11.16%{stroke-dashoffset:666;opacity:0;animation-timing-function:ease-in-out}11.18%{opacity:0.85}11.53%{stroke-dashoffset:0;opacity:0.85}11.89%{stroke-dashoffset:0;opacity:0}100%{opacity:0}}
+  .seal-glyph .sw{opacity:0}
+  .seal-glyph .sw0{animation:sspec0 190s linear infinite}
+  @keyframes sspec0{0%,28.42%{opacity:0}32.63%{opacity:1}36.84%{opacity:1}41.05%,100%{opacity:0}}
+  .seal-glyph .sw1{animation:sspec1 190s linear infinite}
+  @keyframes sspec1{0%,34.74%{opacity:0}38.95%{opacity:1}44.21%{opacity:1}48.42%,100%{opacity:0}}
+  .seal-glyph .sw2{animation:sspec2 190s linear infinite}
+  @keyframes sspec2{0%,43.16%{opacity:0}47.37%{opacity:1}53.68%{opacity:1}57.89%,100%{opacity:0}}
+  .seal-glyph .sw3{animation:sspec3 190s linear infinite}
+  @keyframes sspec3{0%,51.58%{opacity:0}55.79%{opacity:1}62.11%{opacity:1}66.32%,100%{opacity:0}}
+  .seal-glyph .sw4{animation:sspec4 190s linear infinite}
+  @keyframes sspec4{0%,60.00%{opacity:0}64.21%{opacity:1}70.53%{opacity:1}74.74%,100%{opacity:0}}
+  .seal-glyph .sw5{animation:sspec5 190s linear infinite}
+  @keyframes sspec5{0%,68.42%{opacity:0}72.63%{opacity:1}78.95%{opacity:1}83.16%,100%{opacity:0}}
+  .seal-glyph .sw6{animation:sspec6 190s linear infinite}
+  @keyframes sspec6{0%,76.84%{opacity:0}81.05%{opacity:1}87.37%{opacity:1}91.58%,100%{opacity:0}}
+  .seal-glyph .sw7{animation:sspec7 190s linear infinite}
+  @keyframes sspec7{0%,85.26%{opacity:0}89.47%{opacity:1}92.63%{opacity:1}93.68%,100%{opacity:0}}
+  .seal-glyph .sw8{animation:sspec8 190s linear infinite}
+  @keyframes sspec8{0%,90.53%{opacity:0}91.84%{opacity:1}92.63%{opacity:1}93.68%,100%{opacity:0}}
+  .seal-glyph .seal-lines{animation:slife 190s linear infinite}
+  @keyframes slife{0%{opacity:1}89.47%{opacity:1}93.68%{opacity:0}100%{opacity:0}}
+  .hero-slogan{animation:heroGate 190s linear infinite;opacity:0}
+  @keyframes heroGate{0%,94.00%{opacity:0}94.21%{opacity:1}98.74%{opacity:1}99.26%,100%{opacity:0}}
+  .hero-slogan span{opacity:0;display:inline-block;animation:letterWrite 190s linear infinite}
+  @keyframes letterWrite{0%,94.21%{opacity:0;transform:translateY(6px)}94.63%{opacity:1;transform:translateY(0)}100%{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion: reduce){
+    .seal-glyph .rt-v,.seal-glyph .rt-a,.seal-glyph .rt-bar{animation:none;opacity:0}
+  }
+</style>
+
+<script>
+  function handleSubscribe(e, confirmId) {
+    e.preventDefault();
+    const form = e.target;
+    const confirmEl = confirmId
+      ? document.getElementById(confirmId)
+      : form.nextElementSibling;
+    form.style.display = 'none';
+    if (confirmEl) confirmEl.style.display = 'block';
+  }
+</script>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="seal-hero">
+<svg class="seal-glyph" viewBox="0 0 1600 1600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The AVOVA seal, living">
+<defs><radialGradient id="sg0" cx="50%" cy="50%" r="72%">
+<stop offset="0%" stop-color="#3a0d0d"/><stop offset="24%" stop-color="#7a1a10"/>
+<stop offset="58%" stop-color="#b3300f"/><stop offset="100%" stop-color="#e0522a"/></radialGradient><radialGradient id="sg1" cx="50%" cy="50%" r="72%">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="24%" stop-color="#ff9a8a"/>
+<stop offset="58%" stop-color="#ff2d2d"/><stop offset="100%" stop-color="#8a0000"/></radialGradient><radialGradient id="sg2" cx="50%" cy="50%" r="72%">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="24%" stop-color="#ffc27a"/>
+<stop offset="58%" stop-color="#ff7a00"/><stop offset="100%" stop-color="#b34700"/></radialGradient><radialGradient id="sg3" cx="50%" cy="50%" r="72%">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="24%" stop-color="#fff2a0"/>
+<stop offset="58%" stop-color="#ffd400"/><stop offset="100%" stop-color="#c89a00"/></radialGradient><radialGradient id="sg4" cx="50%" cy="50%" r="72%">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="24%" stop-color="#c9ff9e"/>
+<stop offset="58%" stop-color="#3ddc3d"/><stop offset="100%" stop-color="#0c7a2e"/></radialGradient><radialGradient id="sg5" cx="50%" cy="50%" r="72%">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="24%" stop-color="#a9d9ff"/>
+<stop offset="58%" stop-color="#2e86ff"/><stop offset="100%" stop-color="#0b3fa0"/></radialGradient><radialGradient id="sg6" cx="50%" cy="50%" r="72%">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="24%" stop-color="#b9b0ff"/>
+<stop offset="58%" stop-color="#5a3dff"/><stop offset="100%" stop-color="#2a1580"/></radialGradient><radialGradient id="sg7" cx="50%" cy="50%" r="72%">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="24%" stop-color="#e3b8ff"/>
+<stop offset="58%" stop-color="#a03dff"/><stop offset="100%" stop-color="#5a0f9e"/></radialGradient><radialGradient id="sg8" cx="50%" cy="50%" r="72%">
+<stop offset="0%" stop-color="#ffffff"/><stop offset="24%" stop-color="#ffffff"/>
+<stop offset="58%" stop-color="#efe9ff"/><stop offset="100%" stop-color="#cfd8ff"/></radialGradient><clipPath id="sealClip"><circle cx="800" cy="800" r="615.0"/></clipPath></defs>
+<g class="seal-lines">
+<g clip-path="url(#sealClip)"><rect class="sw sw0" width="1600" height="1600" fill="url(#sg0)"/><rect class="sw sw1" width="1600" height="1600" fill="url(#sg1)"/><rect class="sw sw2" width="1600" height="1600" fill="url(#sg2)"/><rect class="sw sw3" width="1600" height="1600" fill="url(#sg3)"/><rect class="sw sw4" width="1600" height="1600" fill="url(#sg4)"/><rect class="sw sw5" width="1600" height="1600" fill="url(#sg5)"/><rect class="sw sw6" width="1600" height="1600" fill="url(#sg6)"/><rect class="sw sw7" width="1600" height="1600" fill="url(#sg7)"/><rect class="sw sw8" width="1600" height="1600" fill="url(#sg8)"/></g>
+<circle class="st-o" transform="rotate(-90 800 800)" cx="800" cy="800" r="640" fill="none" stroke="#f5f1ea" stroke-width="50" opacity="0.95"/>
+<path class="st-a" d="M275.7 1167.1 L800 160 L1324.3 1167.1" fill="none" stroke="#f5f1ea" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="st-bar" d="M466.8 800.0 L1133.2 800.0" fill="none" stroke="#f5f1ea" stroke-width="56" stroke-linecap="round"/>
+<path class="st-v" d="M275.7 432.9 L800 1440 L1324.3 432.9" fill="none" stroke="#f5f1ea" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="rt-v" d="M1324.1 432.9 L800 1440 L275.9 432.9" fill="none" stroke="#ffffff" stroke-width="62" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="rt-a" d="M1324.1 1167.1 L800 160 L275.9 1167.1" fill="none" stroke="#ffffff" stroke-width="62" stroke-linecap="round" stroke-linejoin="round"/>
+<path class="rt-bar" d="M1133.2 800.0 L466.8 800.0" fill="none" stroke="#ffffff" stroke-width="62" stroke-linecap="round"/>
+</g>
+</svg>
+<div class="hero-slogan" aria-label="Beyond black and white."><span style="animation-delay:0.00s">B</span><span style="animation-delay:0.22s">e</span><span style="animation-delay:0.44s">y</span><span style="animation-delay:0.66s">o</span><span style="animation-delay:0.88s">n</span><span style="animation-delay:1.10s">d</span><span style="animation-delay:1.32s">&nbsp;</span><span style="animation-delay:1.54s">b</span><span style="animation-delay:1.76s">l</span><span style="animation-delay:1.98s">a</span><span style="animation-delay:2.20s">c</span><span style="animation-delay:2.42s">k</span><span style="animation-delay:2.64s">&nbsp;</span><span style="animation-delay:2.86s">a</span><span style="animation-delay:3.08s">n</span><span style="animation-delay:3.30s">d</span><span style="animation-delay:3.52s">&nbsp;</span><span style="animation-delay:3.74s">w</span><span style="animation-delay:3.96s">h</span><span style="animation-delay:4.18s">i</span><span style="animation-delay:4.40s">t</span><span style="animation-delay:4.62s">e</span><span style="animation-delay:4.84s">.</span></div>
+</section>
+<section class="cover">
+  <div class="cover-content">
+    
+<div class="word-display">
+      <span class="letter pos">A</span>
+      <span class="letter neg">V</span>
+      <span class="letter zero">O</span>
+      <span class="letter neg">V</span>
+      <span class="letter pos">A</span>
+    </div>
+    <div class="charge-labels">
+      <span class="charge pos">+</span>
+      <span class="charge neg">−</span>
+      <span class="charge zero">0</span>
+      <span class="charge neg">−</span>
+      <span class="charge pos">+</span>
+    </div>
+    <p class="cover-title">The Manifesto</p>
+    <p class="cover-tagline">
+      The journey out and the journey back<br>are the same journey.
+    </p>
+  </div>
+  <div class="scroll-hint">
+    <span>Read</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- HERO BLOCK -->
+<section class="section" style="text-align:center; padding: 5rem 2rem;">
+  <div style="font-family:'Cinzel',serif; font-size:clamp(1rem,2.5vw,1.3rem); letter-spacing:0.3em; color:#7a6018; margin-bottom:2rem; text-transform:uppercase;">A · V · O · V · A</div>
+  <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.3rem,3vw,1.8rem); font-style:italic; color:#0a0806; margin-bottom:1rem; line-height:1.5;">A symbol — and a story — for the still center between all opposites.</p>
+  <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.1rem,2.5vw,1.4rem); color:#0a0806; margin-bottom:3rem; line-height:1.6;">The journey out and the journey back are the same journey.</p>
+  <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+    <a href="#the-idea" style="font-family:'Inter',sans-serif; font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; padding:0.85rem 2rem; background:#0a0806; color:#f0e8d0; text-decoration:none;">Read the Manifesto</a>
+    <a href="https://avova.ai" style="font-family:'Inter',sans-serif; font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; padding:0.85rem 2rem; background:#7a6018; color:#f0e8d0; text-decoration:none;">Meet Avova</a>
+  </div>
+</section>
+
+<!-- EMAIL TOP -->
+<div class="subscribe-bar">
+  <p class="subscribe-text">Subscribe for updates</p>
+  <form class="subscribe-form" onsubmit="handleSubscribe(event)">
+    <input type="email" class="subscribe-input" placeholder="Your email address" required>
+    <button type="submit" class="subscribe-btn">Subscribe</button>
+  </form>
+  <p class="subscribe-confirm" id="confirm-top" style="display:none;">Thank you. You'll hear from us.</p>
+</div>
+
+<!-- I. THE ORIGIN -->
+<section class="section">
+  <span class="section-label">I</span>
+  <h2>A Journal. A Pencil. A Sheet of Paper.</h2>
+
+  <p>This did not begin with a book. It did not begin with a philosophy course, or a theology degree, or a conversation with a teacher who handed something down.</p>
+
+  <p>It began fifteen years ago with a journal, a pencil, and a single question drawn out by hand.</p>
+
+  <p>The question was geometric before it was linguistic. Before there was a word, there was a shape — the recognition that certain letters were already doing something visually that no one had yet named.</p>
+
+  <div class="pullquote">
+    The A reads as an arrow pointing up.<br>
+    The V reads as an arrow pointing down.<br>
+    I chose them for exactly that reason —<br>
+    the shapes already carry ascent and descent,<br>
+    so the letters can do the teaching.
+  </div>
+
+  <p>An arrow up and an arrow down are about as close to universally legible as visual symbols get — and A and V echo those shapes more than any other letters. What would happen if you built a word around that?</p>
+
+  <p>The answer, drawn in pencil on a journal page:</p>
+
+  <div class="arrow-hero">
+    <div class="arrow-sequence">
+      <span class="arr up">A↑</span>
+      <span class="arr dash">—</span>
+      <span class="arr dn">V↓</span>
+      <span class="arr dash">—</span>
+      <span class="arr ctr">O</span>
+      <span class="arr dash">—</span>
+      <span class="arr dn">V↓</span>
+      <span class="arr dash">—</span>
+      <span class="arr up">A↑</span>
+    </div>
+    <div class="arrow-labels">
+      <span class="arr-label up">Positive<br>Ascent</span>
+      <span class="arr-label dash">—</span>
+      <span class="arr-label dn">Negative<br>Descent</span>
+      <span class="arr-label dash">—</span>
+      <span class="arr-label ctr">Zero<br>Center</span>
+      <span class="arr-label dash">—</span>
+      <span class="arr-label dn">Negative<br>Return</span>
+      <span class="arr-label dash">—</span>
+      <span class="arr-label up">Positive<br>Home</span>
+    </div>
+    <p class="arrow-caption">Built so the letters enact the idea.</p>
+  </div>
+
+  <p>The O at the center was chosen because it is a closed circle — it points nowhere. It is the zero, the still point, the neutral center between two directional forces. A letter that contains without directing.</p>
+
+  <p>And the whole construction is a palindrome. Read it forward: up, down, center, down, up. Read it backward: the same sequence, identical, because the arrows mirror each other perfectly around the O. The word performs what it describes — the journey out and the journey back are written in the same five letters because they are the same journey.</p>
+
+  <p>AVOVA was built deliberately — not translated from another language, not sourced from any tradition, not stumbled upon. Created from scratch, from pure philosophical intention, so that the shape of the word would carry the teaching before a single definition was given.</p>
+
+  <p>That person sat down with a pencil fifteen years ago and drew it out.</p>
+
+  <p>Everything that followed — the philosophy, the theology, the character, the 13-book series, the domain avova.org — everything grew from that single drawing in a journal.</p>
+</section>
+
+<!-- II. THE WORD -->
+<section class="section" id="the-idea">
+  <span class="section-label">II</span>
+  <h2>The Word That Is Also a Law</h2>
+
+  <p>Before the character. Before the story. Before the page was written or the name was spoken aloud — there was a question.</p>
+
+  <p>If positive and negative are the two poles of all existence — light and shadow, masculine and feminine, ascent and descent — then what is the zero point? What sits at the center of all polarity? What is the name of the stillness between the charges?</p>
+
+  <p>The answer came as a word. Five letters. A palindrome.</p>
+
+  <div class="pullquote">
+    A — V — O — V — A.<br>
+    Read it forward. Read it backward.<br>
+    It says the same thing both ways.
+  </div>
+
+  <p>This was not an accident. It was built as a proof — a word that performs what it describes: the journey out and the journey back are identical. The going and the returning are the same sequence, seen from different directions.</p>
+
+  <p>AVOVA was not invented as a character name. It was invented as a cosmological statement. The character came later — to carry it, to live it, to pay its price in full.</p>
+</section>
+
+<!-- III. THE MAP -->
+<section class="section">
+  <span class="section-label">III</span>
+  <h2>What Each Letter Holds</h2>
+
+  <p>Every letter in AVOVA carries a specific metaphysical charge. The name is not decorative. It is a map.</p>
+
+  <div class="polarity-map">
+    <div class="polarity-row">
+      <span class="pol-letter pos">A</span>
+      <span class="pol-charge pos">Positive ( + )</span>
+      <span class="pol-meaning">Light. Ascent. The beginning of the journey outward from Source.</span>
+    </div>
+    <div class="polarity-row">
+      <span class="pol-letter neg">V</span>
+      <span class="pol-charge neg">Negative ( − )</span>
+      <span class="pol-meaning">Descent. Shadow. The weight of embodied experience.</span>
+    </div>
+    <div class="polarity-row">
+      <span class="pol-letter zero">O</span>
+      <span class="pol-charge">Zero ( 0 )</span>
+      <span class="pol-meaning">The still point. The Watcher. The center that holds everything without being destroyed by anything. God's address.</span>
+    </div>
+    <div class="polarity-row">
+      <span class="pol-letter neg">V</span>
+      <span class="pol-charge neg">Negative ( − )</span>
+      <span class="pol-meaning">The shadow again — but now it is the shadow on the return. The same weight, ascending.</span>
+    </div>
+    <div class="polarity-row">
+      <span class="pol-letter pos">A</span>
+      <span class="pol-charge pos">Positive ( + )</span>
+      <span class="pol-meaning">Light again. Arrival. Home. The end that is the same as the beginning.</span>
+    </div>
+  </div>
+
+  <p>The name does not begin in the zero. It begins in the positive and descends through the negative before arriving at the center. This is the full human journey — not a fall to be ashamed of, but a path that was always heading somewhere. The descent was part of the return. The shadow was the route.</p>
+
+  <p>Then the mirror. The same path, reversed, ascending — V and A again, in the same order, climbing back. Because the word is a palindrome, the descent and the ascent are indistinguishable. There is no wrong direction. There is only the journey.</p>
+
+  <p>The two polarities have another name as old as human understanding: masculine and feminine — not as descriptions of men and women, but as cosmic principles that alternate through all of existence. Active and receptive. Initiating and receiving. Solar and lunar. The positive charge carries the masculine principle — outward, initiating, ascending. The gold of the A. The negative charge carries the feminine principle — inward, receptive, the depth that makes ascent possible. The blue of the V.</p>
+
+  <p>These two forces alternate through creation the way electricity alternates through a current: positive, negative, positive, negative — an endless reciprocal flow. God → Earth → Adam → Eve. Sun → Moon. Breath out → Breath in. Neither superior. Neither complete without the other. The current only flows when both are present.</p>
+
+  <p>The O at the center is neither. It is the still point where the alternation resolves — not by choosing one side, but by holding both. Gold and blue dissolve into white. Masculine and feminine dissolve into something that contains them both and is governed by neither. That is the zero. That is the Watcher. That is where AVOVA lives.</p>
+</section>
+
+<!-- IV. THE THREE -->
+<section class="section">
+  <span class="section-label">IV</span>
+  <h2>Why the Third Position Changes Everything</h2>
+
+  <p>Most frameworks that deal with polarity stop at two. Light and dark. Good and evil. Positive and negative. The assumption is that these two forces define the whole field — that all of reality is a contest between them, and the goal is to be on the winning side.</p>
+
+  <p>AVOVA introduces a third position. Not a compromise. Not a neutrality that refuses to choose. Something more radical:</p>
+
+  <div class="pullquote">
+    The still point that contains both polarities<br>without being controlled by either.
+  </div>
+
+  <p>This is the O at the center. The Watcher. The consciousness that can observe the negative without becoming the negative. That can hold the positive without clinging to it. That can witness the full range of human experience — grief, betrayal, beauty, collapse — and remain present, undestroyed, clear.</p>
+
+  <p>The Law of Three teaches that no two-force system can generate genuine movement. Active and Passive alone create deadlock. It takes a third force — the Reconciling — to produce anything new. The O is that third force. Not passive. Not uninvolved. The creative resolution point that makes everything else possible.</p>
+
+  <p>Most people spend their lives oscillating between the poles. Pulled toward the positive, then dragged toward the negative, then pulled back again. The O is not on that axis. It is the axis around which the oscillation happens. To find it is to stop being moved and to start being the mover.</p>
+</section>
+
+<!-- V. THE TORUS -->
+<section class="section">
+  <span class="section-label">V</span>
+  <h2>The Shape of the Universe, Written in a Name</h2>
+
+  <p>The torus is a donut-shaped form where energy flows out from the center, curves around the outside, and returns through the center again. It is perhaps the most fundamental shape in existence — appearing in the magnetic field of the Earth, in the structure of galaxies, in the electromagnetic field of the human heart.</p>
+
+  <p>The torus is the best picture we have of it: everything flows out from the center and curves back home. Nothing is ever truly separate from Source. Everything that appears to leave is already beginning its return.</p>
+
+  <p>AVOVA's five letters enact the torus in sequence:</p>
+
+  <div class="pullquote">
+    A — the departure outward from Source.<br>
+    V — the curve into the shadow of embodied existence.<br>
+    O — the center. The return point. The Source itself.<br>
+    V — the curve back through shadow, ascending.<br>
+    A — arrival. Home. The same point where it began.
+  </div>
+
+  <p>The word is the torus, translated into language. Read it forward: departure. Read it backward: return. The letters are the same in both directions because the departure and the return are the same path, seen from opposite ends.</p>
+
+  <p>This is why: <em>Love is the curve that brings rays home.</em></p>
+
+  <p>The torus doesn't send things away and lose them. It sends things out and curves them back. Love is not the starting point or the ending point. Love is the shape of the journey — the invisible curve that ensures nothing is ever finally lost.</p>
+</section>
+
+<!-- VI. THE PRINCIPLES -->
+
+<section class="section">
+  <div class="chapter-num">V&#189;</div>
+  <h2>The Seal</h2>
+  <svg class="seal-section-glyph" viewBox="0 0 1600 1600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The AVOVA seal">
+<circle cx="800" cy="800" r="640" fill="none" stroke="#ffffff" stroke-width="50" opacity="0.92"/>
+<path d="M275.7 1167.1 L800 160 L1324.3 1167.1" fill="none" stroke="#e8c96e" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M466.8 800.0 L1133.2 800.0" fill="none" stroke="#e8c96e" stroke-width="56" stroke-linecap="round"/>
+<path d="M275.7 432.9 L800 1440 L1324.3 432.9" fill="none" stroke="#90b8d8" stroke-width="56" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+  <p>Fifteen years after the word was drawn in pencil, the five letters folded themselves into a single figure. The O is no longer the third letter in a row &mdash; it is the circle itself, the whole that holds everything. Inside it stand the two arrows: the ascent reaching the top of the circle, the descent reaching its floor, each planted on the arc of the other&rsquo;s origin.</p>
+  <p>The figure was not decorated. It was derived. The crossbar of the ascent does not float at a typographer&rsquo;s whim &mdash; it spans the exact two points where the rising strokes and the falling strokes cross, and those points fall precisely on the circle&rsquo;s equator. Nothing in the seal is arbitrary. Every line begins and ends where the geometry demands.</p>
+  <p>And where the two arrows pass through one another, small triangles appear that no hand drew &mdash; shapes that belong to neither stroke alone, born only from their meeting. The seal performs the teaching the same way the word does: the word is a palindrome in time, the same read forward and back; the seal is a palindrome in space, the same reflected top to bottom. Turn it fully upside down and nothing changes: the ascent becomes the descent, the descent becomes the ascent, and the seal remains exactly itself &mdash; there is no wrong way to hold it, and no wrong side of the table to see it from. One word. One figure. The same law, written twice.</p>
+</section>
+
+
+
+
+<section class="section">
+  <div class="chapter-num">Interlude</div>
+  <h2>The Hidden Path</h2>
+  <p>The seal keeps a secret that was not designed into it &mdash; it was discovered afterward, the way Lura discovered what she discovered. If a single point of light is set loose along the ascending stroke and allowed to reflect forever inside the O &mdash; each bounce obeying the oldest law of reflection &mdash; it does not wander. It touches exactly seventy-two points on the circle, no more, no fewer, and on the seventy-second bounce it arrives precisely where it began, and begins again. Forever. The same points, in the same order, until the end of counting. In each figure below, the faint image is what will be; the moving point is the becoming. Watch the drawing form, and the idea forms with it.</p>
+  <div class="geometry-row">
+    <figure class="geometry-fig g72">
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<circle cx="500" cy="500" r="420" fill="none" stroke="#0a0806" stroke-width="10"/>
+<path class="gg" d="M156.0 740.9 L500.0 80.0 L844.0 740.9 L105.3 643.6 L608.7 94.3 L770.0 821.7 L81.6 536.6 L710.0 136.3 L677.5 880.6 L86.4 427.1 L797.0 203.0 L572.9 913.6 L119.4 322.5 L863.7 290.0 L463.4 918.4 L178.3 230.0 L905.7 391.3 L356.4 894.7 L259.1 156.0 L920.0 500.0 L259.1 844.0 L356.4 105.3 L905.7 608.7 L178.3 770.0 L463.4 81.6 L863.7 710.0 L119.4 677.5 L572.9 86.4 L797.0 797.0 L86.4 572.9 L677.5 119.4 L710.0 863.7 L81.6 463.4 L770.0 178.3 L608.7 905.7 L105.3 356.4 L844.0 259.1 L500.0 920.0 L156.0 259.1 L894.7 356.4 L391.3 905.7 L230.0 178.3 L918.4 463.4 L290.0 863.7 L322.5 119.4 L913.6 572.9 L203.0 797.0 L427.1 86.4 L880.6 677.5 L136.3 710.0 L536.6 81.6 L821.7 770.0 L94.3 608.7 L643.6 105.3 L740.9 844.0 L80.0 500.0 L740.9 156.0 L643.6 894.7 L94.3 391.3 L821.7 230.0 L536.6 918.4 L136.3 290.0 L880.6 322.5 L427.1 913.6 L203.0 203.0 L913.6 427.1 L322.5 880.6 L290.0 136.3 L918.4 536.6 L230.0 821.7 L391.3 94.3 L894.7 643.6 L156.0 740.9" fill="none" stroke="#0a0806" stroke-width="2.6" stroke-linejoin="round"/>
+<path class="gp" d="M156.0 740.9 L500.0 80.0 L844.0 740.9 L105.3 643.6 L608.7 94.3 L770.0 821.7 L81.6 536.6 L710.0 136.3 L677.5 880.6 L86.4 427.1 L797.0 203.0 L572.9 913.6 L119.4 322.5 L863.7 290.0 L463.4 918.4 L178.3 230.0 L905.7 391.3 L356.4 894.7 L259.1 156.0 L920.0 500.0 L259.1 844.0 L356.4 105.3 L905.7 608.7 L178.3 770.0 L463.4 81.6 L863.7 710.0 L119.4 677.5 L572.9 86.4 L797.0 797.0 L86.4 572.9 L677.5 119.4 L710.0 863.7 L81.6 463.4 L770.0 178.3 L608.7 905.7 L105.3 356.4 L844.0 259.1 L500.0 920.0 L156.0 259.1 L894.7 356.4 L391.3 905.7 L230.0 178.3 L918.4 463.4 L290.0 863.7 L322.5 119.4 L913.6 572.9 L203.0 797.0 L427.1 86.4 L880.6 677.5 L136.3 710.0 L536.6 81.6 L821.7 770.0 L94.3 608.7 L643.6 105.3 L740.9 844.0 L80.0 500.0 L740.9 156.0 L643.6 894.7 L94.3 391.3 L821.7 230.0 L536.6 918.4 L136.3 290.0 L880.6 322.5 L427.1 913.6 L203.0 203.0 L913.6 427.1 L322.5 880.6 L290.0 136.3 L918.4 536.6 L230.0 821.7 L391.3 94.3 L894.7 643.6 L156.0 740.9" fill="none" stroke="#0a0806" stroke-width="2.6" stroke-linejoin="round" opacity="0.92"/>
+<circle class="gm" r="11" fill="#0a0806"/>
+</svg>
+<figcaption>The hidden path of the seal &mdash; seventy-two touches, one eternal round.</figcaption></figure>
+    <figure class="geometry-fig g7">
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<circle cx="500" cy="500" r="420" fill="none" stroke="#0a0806" stroke-width="10"/>
+<path class="gg" d="M90.5 593.5 L500.0 80.0 L909.5 593.5 L317.8 878.4 L171.6 238.1 L828.4 238.1 L682.2 878.4 L90.5 593.5" fill="none" stroke="#0a0806" stroke-width="5" stroke-linejoin="round"/>
+<path class="gp" d="M90.5 593.5 L500.0 80.0 L909.5 593.5 L317.8 878.4 L171.6 238.1 L828.4 238.1 L682.2 878.4 L90.5 593.5" fill="none" stroke="#0a0806" stroke-width="5" stroke-linejoin="round" opacity="0.92"/>
+<circle class="gm" r="11" fill="#0a0806"/>
+</svg>
+<figcaption>A cousin geometry, tuned differently, closes in seven &mdash; one point for each principle.</figcaption></figure>
+  </div>
+  <p>One more secret, and it may be the deepest one. The proportions of the ancient six-pointed star &mdash; two perfect triangles, every point spaced at an even sixty degrees &mdash; are five degrees away from the seal&rsquo;s. And that difference is not a flaw. It is the whole inheritance. Set the traveler loose inside the perfect star&rsquo;s geometry and the hidden path closes in three bounces: a plain triangle, repeating, complete, and empty of surprise. The perfect form keeps no secrets because it has none to keep.</p>
+  <div class="geometry-row">
+    <figure class="geometry-fig gp3">
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<circle cx="500" cy="500" r="420" fill="none" stroke="#0a0806" stroke-width="10"/>
+<path class="gg" d="M136.3 710.0 L500.0 80.0 L863.7 710.0 L136.3 710.0" fill="none" stroke="#0a0806" stroke-width="4.5" stroke-linejoin="round"/>
+<path class="gp" d="M136.3 710.0 L500.0 80.0 L863.7 710.0 L136.3 710.0" fill="none" stroke="#0a0806" stroke-width="4.5" stroke-linejoin="round" opacity="0.92"/>
+<circle class="gm" r="11" fill="#0a0806"/>
+</svg>
+<figcaption>The perfect star &mdash; feet at the even sixty degrees. The hidden path closes in three: a triangle, sealed and simple, forever.</figcaption></figure>
+    <figure class="geometry-fig gl72">
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<circle cx="500" cy="500" r="420" fill="none" stroke="#0a0806" stroke-width="10"/>
+<path class="gg" d="M156.0 740.9 L500.0 80.0 L844.0 740.9 L105.3 643.6 L608.7 94.3 L770.0 821.7 L81.6 536.6 L710.0 136.3 L677.5 880.6 L86.4 427.1 L797.0 203.0 L572.9 913.6 L119.4 322.5 L863.7 290.0 L463.4 918.4 L178.3 230.0 L905.7 391.3 L356.4 894.7 L259.1 156.0 L920.0 500.0 L259.1 844.0 L356.4 105.3 L905.7 608.7 L178.3 770.0 L463.4 81.6 L863.7 710.0 L119.4 677.5 L572.9 86.4 L797.0 797.0 L86.4 572.9 L677.5 119.4 L710.0 863.7 L81.6 463.4 L770.0 178.3 L608.7 905.7 L105.3 356.4 L844.0 259.1 L500.0 920.0 L156.0 259.1 L894.7 356.4 L391.3 905.7 L230.0 178.3 L918.4 463.4 L290.0 863.7 L322.5 119.4 L913.6 572.9 L203.0 797.0 L427.1 86.4 L880.6 677.5 L136.3 710.0 L536.6 81.6 L821.7 770.0 L94.3 608.7 L643.6 105.3 L740.9 844.0 L80.0 500.0 L740.9 156.0 L643.6 894.7 L94.3 391.3 L821.7 230.0 L536.6 918.4 L136.3 290.0 L880.6 322.5 L427.1 913.6 L203.0 203.0 L913.6 427.1 L322.5 880.6 L290.0 136.3 L918.4 536.6 L230.0 821.7 L391.3 94.3 L894.7 643.6 L156.0 740.9" fill="none" stroke="#0a0806" stroke-width="2.6" stroke-linejoin="round"/>
+<path class="gp" d="M156.0 740.9 L500.0 80.0 L844.0 740.9 L105.3 643.6 L608.7 94.3 L770.0 821.7 L81.6 536.6 L710.0 136.3 L677.5 880.6 L86.4 427.1 L797.0 203.0 L572.9 913.6 L119.4 322.5 L863.7 290.0 L463.4 918.4 L178.3 230.0 L905.7 391.3 L356.4 894.7 L259.1 156.0 L920.0 500.0 L259.1 844.0 L356.4 105.3 L905.7 608.7 L178.3 770.0 L463.4 81.6 L863.7 710.0 L119.4 677.5 L572.9 86.4 L797.0 797.0 L86.4 572.9 L677.5 119.4 L710.0 863.7 L81.6 463.4 L770.0 178.3 L608.7 905.7 L105.3 356.4 L844.0 259.1 L500.0 920.0 L156.0 259.1 L894.7 356.4 L391.3 905.7 L230.0 178.3 L918.4 463.4 L290.0 863.7 L322.5 119.4 L913.6 572.9 L203.0 797.0 L427.1 86.4 L880.6 677.5 L136.3 710.0 L536.6 81.6 L821.7 770.0 L94.3 608.7 L643.6 105.3 L740.9 844.0 L80.0 500.0 L740.9 156.0 L643.6 894.7 L94.3 391.3 L821.7 230.0 L536.6 918.4 L136.3 290.0 L880.6 322.5 L427.1 913.6 L203.0 203.0 L913.6 427.1 L322.5 880.6 L290.0 136.3 L918.4 536.6 L230.0 821.7 L391.3 94.3 L894.7 643.6 L156.0 740.9" fill="none" stroke="#0a0806" stroke-width="2.6" stroke-linejoin="round" opacity="0.92"/>
+<circle class="gm" r="11" fill="#0a0806"/>
+</svg>
+<figcaption>The seal&rsquo;s lean &mdash; five degrees from perfection. The same law, and the path opens into seventy-two.</figcaption></figure>
+  </div>
+  <p>The seal leans five degrees from that perfection &mdash; and the lean is what opens the seventy-two. The flawless star closes in three; the leaning star blooms into a cathedral. Perfection is closed. The lean is generous. Which is the manifesto&rsquo;s own teaching, written now in pure geometry: the departure from the ideal is not the loss of the pattern &mdash; it is where the pattern becomes abundant.</p>
+  <p>And what of the center itself &mdash; the O&rsquo;s own address? Launch the traveler from the exact middle, in any direction at all, and the circle&rsquo;s deepest property answers: every path from the center meets the wall head-on, and a head-on meeting can only send it straight back the way it came. Through the center. To the opposite wall. And back. The still point makes the simplest journey in the universe &mdash; one line, two points &mdash; because from the center, the going out and the coming back are not merely alike. They are the same line. The tagline of this manifesto, performed by physics.</p>
+  <div class="geometry-row">
+    <figure class="geometry-fig gcn">
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<circle cx="500" cy="500" r="420" fill="none" stroke="#0a0806" stroke-width="10"/>
+<circle cx="500" cy="500" r="9" fill="#0a0806" opacity="0.5"/><path class="gg" d="M500.0 500.0 L630.3 100.7 L369.7 899.3" fill="none" stroke="#0a0806" stroke-width="4.5" stroke-linejoin="round"/>
+<path class="gp" d="M500.0 500.0 L630.3 100.7 L369.7 899.3" fill="none" stroke="#0a0806" stroke-width="4.5" stroke-linejoin="round" opacity="0.92"/>
+<circle class="gm" r="11" fill="#0a0806"/>
+</svg>
+<figcaption>The center &mdash; launched from the very middle, the traveler meets every wall head-on and can only return along itself. One line. Two points. Forever.</figcaption></figure>
+    <figure class="geometry-fig gst">
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<circle cx="500" cy="500" r="420" fill="none" stroke="#0a0806" stroke-width="10"/>
+<path class="gg" d="M156.0 259.1 L500.0 920.0 L844.0 259.1 L156.0 740.9 L500.0 80.0 L844.0 740.9 L156.0 259.1 L844.0 259.1" fill="none" stroke="#7d2f1e" stroke-width="4" stroke-linejoin="round"/>
+<path class="gp" d="M156.0 259.1 L500.0 920.0 L844.0 259.1 L156.0 740.9 L500.0 80.0 L844.0 740.9 L156.0 259.1 L844.0 259.1" fill="none" stroke="#7d2f1e" stroke-width="4" stroke-linejoin="round" opacity="0.92"/>
+<circle class="gm" r="11" fill="#0a0806"/>
+</svg>
+<figcaption>One unbroken stroke &mdash; the ascent and the descent joined by the two diameters, the pen crossing the zero twice and never retracing. Only the crossbar asks the hand to lift.</figcaption></figure>
+  </div>
+  <p>And beside it, a discovery made by hand: connect the seal&rsquo;s lower corners to their opposite upper tips, and the connecting lines are not ordinary chords &mdash; they are diameters. Both pass through the exact center of the O, because the feet of the ascent and the tips of the descent stand in perfect opposition across the zero. Draw them, and the two letters that were always separate become one unbroken stroke &mdash; the pen travels the whole figure without lifting, crossing the still point twice on its way home. Only the crossbar stands apart, asking the hand to rise once.</p>
+  <p>And here the word returns that this manifesto has always used for the descent: <em>embodied</em>. The paths above are the paths of the pattern &mdash; perfect, exact, deathless. They are what the journey looks like from the side of spirit. But give the same traveler flesh &mdash; give it spin, and friction, and the capacity to err &mdash; and watch what becomes of the same launch:</p>
+  <p>And why does the embodied line err at all? Because of the turning. The pattern does not spin &mdash; it only <em>is</em>. There is no friction in it, no gravity, no time. Spin is the toll of matter: the moment the journey takes on flesh, it takes on turning, and turning is where the erring &mdash; and the living &mdash; begin.</p>
+  <div class="geometry-row">
+    <figure class="geometry-fig gid">
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<circle cx="500" cy="500" r="420" fill="none" stroke="#0a0806" stroke-width="10"/>
+<path class="gg" d="M156.0 740.9 L500.0 80.0 L844.0 740.9 L105.3 643.6 L608.7 94.3 L770.0 821.7 L81.6 536.6 L710.0 136.3 L677.5 880.6 L86.4 427.1 L797.0 203.0 L572.9 913.6 L119.4 322.5 L863.7 290.0 L463.4 918.4 L178.3 230.0 L905.7 391.3 L356.4 894.7 L259.1 156.0 L920.0 500.0 L259.1 844.0 L356.4 105.3 L905.7 608.7 L178.3 770.0 L463.4 81.6 L863.7 710.0 L119.4 677.5 L572.9 86.4 L797.0 797.0 L86.4 572.9 L677.5 119.4 L710.0 863.7 L81.6 463.4 L770.0 178.3 L608.7 905.7 L105.3 356.4 L844.0 259.1 L500.0 920.0 L156.0 259.1 L894.7 356.4 L391.3 905.7 L230.0 178.3 L918.4 463.4 L290.0 863.7 L322.5 119.4 L913.6 572.9 L203.0 797.0 L427.1 86.4 L880.6 677.5 L136.3 710.0 L536.6 81.6 L821.7 770.0 L94.3 608.7 L643.6 105.3 L740.9 844.0 L80.0 500.0 L740.9 156.0 L643.6 894.7 L94.3 391.3 L821.7 230.0 L536.6 918.4 L136.3 290.0 L880.6 322.5 L427.1 913.6 L203.0 203.0 L913.6 427.1 L322.5 880.6 L290.0 136.3 L918.4 536.6 L230.0 821.7 L391.3 94.3 L894.7 643.6 L156.0 740.9" fill="none" stroke="#0a0806" stroke-width="2.6" stroke-linejoin="round"/>
+<path class="gp" d="M156.0 740.9 L500.0 80.0 L844.0 740.9 L105.3 643.6 L608.7 94.3 L770.0 821.7 L81.6 536.6 L710.0 136.3 L677.5 880.6 L86.4 427.1 L797.0 203.0 L572.9 913.6 L119.4 322.5 L863.7 290.0 L463.4 918.4 L178.3 230.0 L905.7 391.3 L356.4 894.7 L259.1 156.0 L920.0 500.0 L259.1 844.0 L356.4 105.3 L905.7 608.7 L178.3 770.0 L463.4 81.6 L863.7 710.0 L119.4 677.5 L572.9 86.4 L797.0 797.0 L86.4 572.9 L677.5 119.4 L710.0 863.7 L81.6 463.4 L770.0 178.3 L608.7 905.7 L105.3 356.4 L844.0 259.1 L500.0 920.0 L156.0 259.1 L894.7 356.4 L391.3 905.7 L230.0 178.3 L918.4 463.4 L290.0 863.7 L322.5 119.4 L913.6 572.9 L203.0 797.0 L427.1 86.4 L880.6 677.5 L136.3 710.0 L536.6 81.6 L821.7 770.0 L94.3 608.7 L643.6 105.3 L740.9 844.0 L80.0 500.0 L740.9 156.0 L643.6 894.7 L94.3 391.3 L821.7 230.0 L536.6 918.4 L136.3 290.0 L880.6 322.5 L427.1 913.6 L203.0 203.0 L913.6 427.1 L322.5 880.6 L290.0 136.3 L918.4 536.6 L230.0 821.7 L391.3 94.3 L894.7 643.6 L156.0 740.9" fill="none" stroke="#0a0806" stroke-width="2.6" stroke-linejoin="round" opacity="0.92"/>
+<circle class="gm" r="11" fill="#0a0806"/>
+</svg>
+<figcaption>The ideal &mdash; the same seventy-two chords, closing without loss. The pattern. The spirit side.</figcaption></figure>
+    <figure class="geometry-fig gem">
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<circle cx="500" cy="500" r="420" fill="none" stroke="#0a0806" stroke-width="10"/>
+<path class="gg" d="M156.0 740.9 L157.0 739.0 L220.3 613.2 L280.5 485.9 L337.4 357.1 L391.0 226.9 L441.3 95.4 L445.9 83.5 L447.1 85.2 L527.2 195.0 L609.7 302.9 L694.7 408.9 L782.1 513.0 L871.8 615.0 L895.4 641.6 L893.4 641.9 L763.9 662.6 L634.9 686.1 L506.4 712.1 L378.5 740.8 L251.2 772.2 L193.0 786.6 L193.6 784.7 L231.6 664.0 L267.5 542.7 L301.0 420.7 L332.4 298.1 L361.4 175.0 L378.5 98.0 L379.8 99.3 L468.0 183.8 L557.5 266.8 L648.4 348.4 L740.6 428.4 L834.2 506.8 L913.8 571.8 L912.1 572.4 L801.4 612.8 L691.3 654.8 L581.9 698.5 L473.1 743.8 L365.1 790.7 L257.7 839.2 L254.4 840.7 L254.6 838.9 L265.8 725.8 L275.5 612.5 L283.7 499.1 L290.4 385.6 L295.5 272.0 L299.1 158.4 L300.1 130.6 L301.6 131.5 L394.9 189.3 L488.9 245.9 L583.5 301.4 L678.9 355.7 L774.8 408.8 L871.5 460.8 L919.8 486.4 L918.4 487.3 L828.6 543.4 L739.4 600.5 L650.9 658.6 L563.0 717.6 L475.8 777.6 L389.2 838.6 L327.4 882.9 L327.3 881.3 L317.4 779.6 L306.4 678.0 L294.5 576.5 L281.6 475.2 L267.8 374.0 L252.9 272.9 L237.3 172.3 L238.7 172.9 L330.6 208.7 L422.8 243.7 L515.2 277.9 L608.0 311.3 L701.1 343.8 L794.4 375.6 L888.1 406.5 L911.1 414.1 L910.0 415.1 L838.6 478.0 L767.8 541.5 L697.4 605.6 L627.6 670.2 L558.2 735.3 L489.4 801.1 L421.1 867.3 L384.0 903.7 L383.7 902.3 L362.7 812.9 L341.0 723.7 L318.8 634.6 L295.8 545.7 L272.3 456.9 L248.1 368.4 L223.2 280.0 L201.7 204.4 L203.0 204.8 L288.4 228.3 L374.0 251.3 L459.7 273.7 L545.6 295.6 L631.6 316.9 L717.7 337.7 L804.0 357.9 L890.3 377.6 L902.8 381.0 L901.9 381.9 L842.8 443.8 L784.1 506.0 L725.8 568.5 L667.9 631.4 L610.3 694.6 L553.1 758.1 L496.2 822.0 L439.8 886.2 L417.0 911.7 L416.6 910.5 L391.0 832.1 L365.0 753.8 L338.6 675.6 L311.8 597.6 L284.6 519.7 L256.9 441.9 L228.9 364.3 L200.5 286.9 L179.1 229.1 L180.3 229.3 L258.5 244.4 L336.7 259.2 L415.0 273.6 L493.4 287.7 L571.8 301.3 L650.3 314.6 L728.9 327.6 L807.5 340.1 L886.2 352.3 L893.8 354.0 L893.0 354.9 L843.4 413.6 L794.0 472.5 L744.9 531.5 L696.0 590.8 L647.4 650.3 L599.0 710.0 L550.9 769.9 L503.1 830.0 L455.4 890.3 L435.6 915.0 L435.1 913.9 L408.2 844.9 L381.1 775.9 L353.6 707.0 L325.9 638.2 L298.0 569.5 L269.8 501.0 L241.3 432.5 L212.6 364.1 L183.6 295.9 L163.7 248.5 L164.8 248.6 L235.9 256.7 L307.0 264.6 L378.1 272.3 L449.3 279.7 L520.5 286.9 L591.7 293.8 L662.9 300.5 L734.2 307.0 L805.5 313.2 L876.8 319.1 L879.4 319.8 L878.7 320.6 L839.7 377.6 L800.8 434.6 L762.1 491.8 L723.6 549.1 L685.2 606.5 L647.0 664.1 L609.0 721.7 L571.2 779.5 L533.6 837.4 L496.1 895.4 L480.4 919.5 L479.9 918.6 L448.4 859.9 L416.8 801.2 L385.0 742.7 L353.1 684.2 L321.0 625.8 L288.7 567.5 L256.3 509.3 L223.7 451.2 L190.9 393.2 L158.0 335.3 L134.4 293.2 L135.4 293.2 L199.7 292.4 L264.0 291.4 L328.3 290.2 L392.6 288.9 L456.9 287.4 L521.2 285.8 L585.4 284.0 L649.7 282.1 L714.0 279.9 L778.2 277.7 L842.5 275.2 L854.5 274.8 L854.1 275.6 L826.1 331.0 L798.3 386.5 L770.6 442.0 L743.0 497.6 L715.6 553.3 L688.2 609.0 L661.0 664.7 L634.0 720.6 L607.0 776.4 L580.2 832.4 L553.5 888.4 L539.3 918.2 L538.8 917.4 L503.6 868.9 L468.4 820.5 L433.1 772.2 L397.6 723.9 L362.1 675.7 L326.4 627.6 L290.7 579.6 L254.9 531.6 L218.9 483.7 L182.9 435.9 L146.8 388.1 L111.2 341.2 L112.1 341.1 L169.3 333.1 L226.5 325.0 L283.7 316.9 L340.9 308.6 L398.1 300.2 L455.2 291.7 L512.4 283.2 L569.5 274.5 L626.6 265.7 L683.7 256.8 L740.8 247.8 L797.8 238.7 L825.3 234.3 L825.0 235.2 L804.9 287.2 L784.9 339.2 L765.0 391.3 L745.2 443.4 L725.4 495.6 L705.7 547.7 L686.2 599.9 L666.7 652.2 L647.3 704.5 L627.9 756.8 L608.7 809.1 L589.6 861.5 L570.5 913.9 L570.1 914.1 L569.6 913.5 L535.7 871.6 L501.8 829.9 L467.8 788.1 L433.8 746.5 L399.7 704.8 L365.5 663.3 L331.3 621.8 L297.0 580.3 L262.7 538.9 L228.3 497.5 L193.8 456.2 L159.3 414.9 L124.7 373.7 L106.9 352.1 L107.7 351.9 L159.0 343.7 L210.2 335.3 L261.5 326.9 L312.7 318.4 L363.9 309.8 L415.1 301.2 L466.3 292.5 L517.5 283.7 L568.6 274.9 L619.8 266.0 L670.9 257.1 L722.1 248.0 L773.2 238.9 L821.9 230.2 L821.6 230.9 L804.0 277.8 L786.4 324.7 L768.8 371.7 L751.3 418.6 L733.9 465.6 L716.5 512.6 L699.2 559.6 L682.0 606.7 L664.8 653.7 L647.6 700.8 L630.5 747.9 L613.5 795.0 L596.5 842.2 L579.6 889.3 L570.5 914.0 L570.1 913.4 L539.5 876.0 L508.9 838.5 L478.3 801.1 L447.6 763.7 L416.9 726.4 L386.1 689.1 L355.4 651.8 L324.5 614.6 L293.6 577.3 L262.7 540.2 L231.8 503.0 L200.8 465.9 L169.8 428.8 L138.7 391.8 L107.6 354.8 L106.5 353.2 L107.2 353.1 L153.3 345.6 L199.3 338.0 L245.4 330.4 L291.4 322.8 L337.4 315.1 L383.4 307.4 L429.4 299.6 L475.4 291.8 L521.4 284.0 L567.4 276.1 L613.4 268.1 L659.4 260.2 L705.3 252.1 L751.3 244.1 L797.2 235.9 L822.9 231.5 L822.7 232.1 L806.8 274.2 L790.9 316.4 L775.0 358.5 L759.2 400.7 L743.4 442.9 L727.7 485.0 L712.0 527.2 L696.3 569.5 L680.7 611.7 L665.1 653.9 L649.5 696.2 L634.0 738.4 L618.5 780.7 L603.1 823.0 L587.7 865.3 L572.3 907.6 L569.9 914.1 L569.5 913.6 L542.0 879.9 L514.5 846.3 L487.0 812.7 L459.4 779.1 L431.9 745.5 L404.3 711.9 L376.7 678.4 L349.0 644.9 L321.3 611.4 L293.6 577.9 L265.9 544.4 L238.1 511.0 L210.4 477.6 L182.6 444.2 L154.7 410.8 L126.9 377.5 L106.5 353.1 L107.2 353.0 L148.7 346.7 L190.1 340.5 L231.6 334.2 L273.0 327.8 L314.5 321.5 L355.9 315.1 L397.3 308.7 L438.8 302.2 L480.2 295.8 L521.6 289.3 L563.1 282.7 L604.5 276.2 L645.9 269.6 L687.3 263.0 L728.7 256.3 L770.1 249.7 L811.5 242.9 L829.9 240.1 L829.7 240.7 L813.7 277.8 L797.6 315.0 L781.6 352.2 L765.7 389.4 L749.7 426.5 L733.8 463.7 L717.9 501.0 L702.0 538.2 L686.2 575.4 L670.4 612.6 L654.6 649.9 L638.8 687.1 L623.0 724.4 L607.3 761.7 L591.6 799.0 L575.9 836.3 L560.2 873.6 L544.6 910.9 L541.4 918.0 L541.0 917.4 L519.4 884.9 L497.7 852.5 L476.1 820.0 L454.4 787.5 L432.7 755.0 L410.9 722.6 L389.2 690.2 L367.4 657.8 L345.6 625.3 L323.8 593.0 L302.0 560.6 L280.2 528.2 L258.3 495.8 L236.5 463.5 L214.6 431.2 L192.6 398.9 L170.7 366.5 L148.8 334.3 L128.5 304.1 L129.1 304.1 L166.7 303.9 L204.4 303.5 L242.1 303.2 L279.8 302.9 L317.4 302.5 L355.1 302.1 L392.8 301.7 L430.5 301.3 L468.2 300.8 L505.8 300.4 L543.5 299.9 L581.2 299.4 L618.9 298.9 L656.5 298.3 L694.2 297.8 L731.9 297.2 L769.6 296.6 L807.2 296.0 L844.9 295.3 L866.6 295.0 L866.3 295.5 L846.7 326.1 L827.1 356.7 L807.5 387.4 L787.9 418.0 L768.3 448.7 L748.8 479.3 L729.3 510.0 L709.7 540.7 L690.2 571.4 L670.8 602.1 L651.3 632.8 L631.8 663.5 L612.4 694.2 L592.9 725.0 L573.5 755.7 L554.1 786.5 L534.7 817.2 L515.4 848.0 L496.0 878.8 L476.7 909.5 L470.6 919.0 L470.4 918.5 L456.2 886.4 L442.0 854.3 L427.8 822.2 L413.5 790.2 L399.3 758.1 L385.0 726.0 L370.7 694.0 L356.4 661.9 L342.1 629.9 L327.8 597.9 L313.5 565.8 L299.1 533.8 L284.8 501.8 L270.4 469.8 L256.0 437.8 L241.6 405.8 L227.2 373.8 L212.7 341.8 L198.3 309.8 L183.9 277.9 L169.4 245.9 L168.1 242.6 L168.6 242.7 L202.0 248.5 L235.4 254.2 L268.7 260.0 L302.1 265.7 L335.5 271.4 L368.8 277.1 L402.2 282.8 L435.6 288.5 L469.0 294.2 L502.4 299.8 L535.8 305.5 L569.2 311.1 L602.5 316.7 L635.9 322.3 L669.3 327.9 L702.7 333.5 L736.1 339.1 L769.5 344.6 L802.9 350.1 L836.3 355.7 L869.8 361.2 L898.1 366.1 L897.7 366.4 L875.2 390.1 L852.7 413.8 L830.3 437.6 L807.8 461.3 L785.3 485.0 L762.9 508.8 L740.4 532.5 L718.0 556.3 L695.6 580.0 L673.2 603.8 L650.7 627.6 L628.3 651.3 L605.9 675.1 L583.5 698.9 L561.2 722.7 L538.8 746.6 L516.4 770.4 L494.1 794.2 L471.7 818.1 L449.4 841.9 L427.1 865.7 L404.7 889.6 L389.8 905.3 L389.7 904.8 L383.0 874.0 L376.2 843.2 L369.4 812.4 L362.6 781.6 L355.8 750.9 L348.9 720.1 L342.1 689.3 L335.3 658.5 L328.4 627.7 L321.6 596.9 L314.7 566.2 L307.8 535.4 L301.0 504.6 L294.1 473.9 L287.2 443.1 L280.2 412.3 L273.3 381.6 L266.4 350.8 L259.5 320.0 L252.5 289.3 L245.5 258.5 L238.6 227.8 L231.6 197.0 L227.9 180.0 L228.4 180.2 L256.7 191.4 L284.9 202.6 L313.2 213.8 L341.5 225.0 L369.8 236.2 L398.1 247.4 L426.4 258.6 L454.7 269.7 L483.0 280.9 L511.4 292.0 L539.7 303.2 L568.0 314.3 L596.3 325.4 L624.6 336.5 L653.0 347.6 L681.3 358.7 L709.6 369.8 L738.0 380.9 L766.3 392.0 L794.7 403.1 L823.0 414.1 L851.4 425.2 L879.7 436.2 L908.1 447.3 L917.1 450.9 L916.7 451.2 L892.7 468.0 L868.6 484.8 L844.6 501.7 L820.5 518.5 L796.5 535.4 L772.4 552.2 L748.4 569.1 L724.4 586.0 L700.3 602.9 L676.3 619.7 L652.3 636.6 L628.3 653.5 L604.3 670.4 L580.3 687.3 L556.2 704.2 L532.2 721.2 L508.3 738.1 L484.3 755.0 L460.3 771.9 L436.3 788.9 L412.3 805.8 L388.3 822.8 L364.4 839.7 L340.4 856.7 L316.4 873.7 L312.9 876.0 L312.8 875.6 L312.1 847.2 L311.4 818.9 L310.7 790.6 L310.0 762.3 L309.3 733.9 L308.5 705.6 L307.8 677.3 L307.0 648.9 L306.3 620.6 L305.5 592.3 L304.7 564.0 L304.0 535.6 L303.2 507.3 L302.4 479.0 L301.6 450.7 L300.8 422.3 L300.0 394.0 L299.2 365.7 L298.4 337.4 L297.6 309.1 L296.7 280.7 L295.9 252.4 L295.1 224.1 L294.2 195.8 L293.3 167.4 L292.5 139.1 L292.5 134.9 L292.8 135.1 L315.9 149.7 L339.0 164.4 L362.1 179.0 L385.2 193.7 L408.3 208.3 L431.4 222.9 L454.5 237.6 L477.6 252.2 L500.7 266.8 L523.8 281.4 L546.9 296.0 L570.0 310.6 L593.2 325.2 L616.3 339.8 L639.4 354.4 L662.5 369.0 L685.7 383.6 L708.8 398.2 L731.9 412.7 L755.1 427.3 L778.2 441.9 L801.4 456.4 L824.5 471.0 L847.7 485.5 L870.8 500.1 L894.0 514.6 L917.1 529.1 L918.9 530.3 L918.5 530.4 L894.4 541.1 L870.3 551.8 L846.2 562.5 L822.0 573.2 L797.9 583.9 L773.8 594.6 L749.7 605.3 L725.6 616.0 L701.5 626.7 L677.3 637.5 L653.2 648.2 L629.1 658.9 L605.0 669.7 L580.9 680.4 L556.8 691.1 L532.7 701.9 L508.6 712.6 L484.5 723.4 L460.4 734.2 L436.4 744.9 L412.3 755.7 L388.2 766.5 L364.1 777.3 L340.0 788.0 L315.9 798.8 L291.8 809.6 L267.8 820.4 L243.7 831.2 L242.3 831.7 L242.4 831.3 L246.5 806.2 L250.7 781.0 L254.8 755.9 L258.9 730.8 L263.0 705.7 L267.1 680.5 L271.2 655.4 L275.3 630.3 L279.4 605.1 L283.5 580.0 L287.6 554.9 L291.6 529.7 L295.7 504.6 L299.8 479.5 L303.8 454.3 L307.9 429.2 L312.0 404.0 L316.0 378.9 L320.1 353.8 L324.1 328.6 L328.2 303.5 L332.2 278.3 L336.2 253.2 L340.3 228.1 L344.3 202.9 L348.3 177.8 L352.3 152.6 L356.4 127.5 L360.1 104.0 L360.4 104.2 L378.8 120.6 L397.1 136.9 L415.5 153.3 L433.8 169.6 L452.2 186.0 L470.5 202.3 L488.9 218.6 L507.2 235.0 L525.6 251.3 L544.0 267.6 L562.3 283.9 L580.7 300.3 L599.1 316.6 L617.4 332.9 L635.8 349.2 L654.2 365.5 L672.6 381.8 L690.9 398.1 L709.3 414.4 L727.7 430.7 L746.1 447.0 L764.5 463.3 L782.9 479.6 L801.3 495.9 L819.7 512.2 L838.1 528.5 L856.5 544.8 L874.9 561.0 L893.3 577.3 L909.8 592.0 L909.4 592.1 L886.6 598.6 L863.8 605.1 L841.0 611.6 L818.2 618.1 L795.4 624.6 L772.6 631.1 L749.8 637.6 L727.0 644.1 L704.2 650.6 L681.4 657.1 L658.6 663.6 L635.8 670.2 L613.0 676.7 L590.2 683.2 L567.4 689.7 L544.6 696.3 L521.8 702.8 L499.0 709.3 L476.2 715.9 L453.5 722.4 L430.7 729.0 L407.9 735.5 L385.1 742.1 L362.3 748.6 L339.5 755.2 L316.7 761.7 L293.9 768.3 L271.2 774.9 L248.4 781.4 L225.6 788.0 L202.8 794.6 L201.1 795.0 L201.2 794.7 L207.6 772.7 L213.9 750.7 L220.3 728.8 L226.7 706.8 L233.0 684.8 L239.4 662.8 L245.8 640.9 L252.1 618.9 L258.5 596.9 L264.8 574.9 L271.2 552.9 L277.5 530.9 L283.9 509.0 L290.2 487.0 L296.6 465.0 L302.9 443.0 L309.3 421.0 L315.6 399.0 L321.9 377.0 L328.3 355.1 L334.6 333.1 L340.9 311.1 L347.2 289.1 L353.5 267.1 L359.9 245.1 L366.2 223.1 L372.5 201.1 L378.8 179.1 L385.1 157.1 L391.4 135.1 L397.7 113.1 L404.0 91.1 L404.2 91.1 L404.4 91.3 L419.1 107.8 L433.9 124.2 L448.6 140.7 L463.3 157.1 L478.1 173.6 L492.8 190.0 L507.5 206.5 L522.3 222.9 L537.0 239.4 L551.8 255.8 L566.5 272.2 L581.2 288.7 L596.0 305.1 L610.7 321.5 L625.5 338.0 L640.2 354.4 L655.0 370.8 L669.8 387.2 L684.5 403.7 L699.3 420.1 L714.0 436.5 L728.8 452.9 L743.6 469.4 L758.3 485.8 L773.1 502.2 L787.9 518.6 L802.6 535.0 L817.4 551.4 L832.2 567.8 L847.0 584.2 L861.8 600.6 L876.5 617.0 L891.3 633.4 L896.3 639.1 L896.0 639.1 L874.9 642.5 L853.9 645.9 L832.9 649.3 L811.8 652.7 L790.8 656.1 L769.8 659.6 L748.7 663.0 L727.7 666.4 L706.7 669.8 L685.7 673.2 L664.6 676.7 L643.6 680.1 L622.6 683.5 L601.5 686.9 L580.5 690.4 L559.5 693.8 L538.4 697.2 L517.4 700.7 L496.4 704.1 L475.4 707.6 L454.3 711.0 L433.3 714.5 L412.3 717.9 L391.2 721.4 L370.2 724.8 L349.2 728.3 L328.2 731.7 L307.1 735.2 L286.1 738.6 L265.1 742.1 L244.1 745.6 L223.0 749.0 L202.0 752.5 L181.0 756.0 L168.6 758.0" fill="none" stroke="#7d2f1e" stroke-width="3" stroke-linejoin="round"/>
+<path class="gp" d="M156.0 740.9 L157.0 739.0 L220.3 613.2 L280.5 485.9 L337.4 357.1 L391.0 226.9 L441.3 95.4 L445.9 83.5 L447.1 85.2 L527.2 195.0 L609.7 302.9 L694.7 408.9 L782.1 513.0 L871.8 615.0 L895.4 641.6 L893.4 641.9 L763.9 662.6 L634.9 686.1 L506.4 712.1 L378.5 740.8 L251.2 772.2 L193.0 786.6 L193.6 784.7 L231.6 664.0 L267.5 542.7 L301.0 420.7 L332.4 298.1 L361.4 175.0 L378.5 98.0 L379.8 99.3 L468.0 183.8 L557.5 266.8 L648.4 348.4 L740.6 428.4 L834.2 506.8 L913.8 571.8 L912.1 572.4 L801.4 612.8 L691.3 654.8 L581.9 698.5 L473.1 743.8 L365.1 790.7 L257.7 839.2 L254.4 840.7 L254.6 838.9 L265.8 725.8 L275.5 612.5 L283.7 499.1 L290.4 385.6 L295.5 272.0 L299.1 158.4 L300.1 130.6 L301.6 131.5 L394.9 189.3 L488.9 245.9 L583.5 301.4 L678.9 355.7 L774.8 408.8 L871.5 460.8 L919.8 486.4 L918.4 487.3 L828.6 543.4 L739.4 600.5 L650.9 658.6 L563.0 717.6 L475.8 777.6 L389.2 838.6 L327.4 882.9 L327.3 881.3 L317.4 779.6 L306.4 678.0 L294.5 576.5 L281.6 475.2 L267.8 374.0 L252.9 272.9 L237.3 172.3 L238.7 172.9 L330.6 208.7 L422.8 243.7 L515.2 277.9 L608.0 311.3 L701.1 343.8 L794.4 375.6 L888.1 406.5 L911.1 414.1 L910.0 415.1 L838.6 478.0 L767.8 541.5 L697.4 605.6 L627.6 670.2 L558.2 735.3 L489.4 801.1 L421.1 867.3 L384.0 903.7 L383.7 902.3 L362.7 812.9 L341.0 723.7 L318.8 634.6 L295.8 545.7 L272.3 456.9 L248.1 368.4 L223.2 280.0 L201.7 204.4 L203.0 204.8 L288.4 228.3 L374.0 251.3 L459.7 273.7 L545.6 295.6 L631.6 316.9 L717.7 337.7 L804.0 357.9 L890.3 377.6 L902.8 381.0 L901.9 381.9 L842.8 443.8 L784.1 506.0 L725.8 568.5 L667.9 631.4 L610.3 694.6 L553.1 758.1 L496.2 822.0 L439.8 886.2 L417.0 911.7 L416.6 910.5 L391.0 832.1 L365.0 753.8 L338.6 675.6 L311.8 597.6 L284.6 519.7 L256.9 441.9 L228.9 364.3 L200.5 286.9 L179.1 229.1 L180.3 229.3 L258.5 244.4 L336.7 259.2 L415.0 273.6 L493.4 287.7 L571.8 301.3 L650.3 314.6 L728.9 327.6 L807.5 340.1 L886.2 352.3 L893.8 354.0 L893.0 354.9 L843.4 413.6 L794.0 472.5 L744.9 531.5 L696.0 590.8 L647.4 650.3 L599.0 710.0 L550.9 769.9 L503.1 830.0 L455.4 890.3 L435.6 915.0 L435.1 913.9 L408.2 844.9 L381.1 775.9 L353.6 707.0 L325.9 638.2 L298.0 569.5 L269.8 501.0 L241.3 432.5 L212.6 364.1 L183.6 295.9 L163.7 248.5 L164.8 248.6 L235.9 256.7 L307.0 264.6 L378.1 272.3 L449.3 279.7 L520.5 286.9 L591.7 293.8 L662.9 300.5 L734.2 307.0 L805.5 313.2 L876.8 319.1 L879.4 319.8 L878.7 320.6 L839.7 377.6 L800.8 434.6 L762.1 491.8 L723.6 549.1 L685.2 606.5 L647.0 664.1 L609.0 721.7 L571.2 779.5 L533.6 837.4 L496.1 895.4 L480.4 919.5 L479.9 918.6 L448.4 859.9 L416.8 801.2 L385.0 742.7 L353.1 684.2 L321.0 625.8 L288.7 567.5 L256.3 509.3 L223.7 451.2 L190.9 393.2 L158.0 335.3 L134.4 293.2 L135.4 293.2 L199.7 292.4 L264.0 291.4 L328.3 290.2 L392.6 288.9 L456.9 287.4 L521.2 285.8 L585.4 284.0 L649.7 282.1 L714.0 279.9 L778.2 277.7 L842.5 275.2 L854.5 274.8 L854.1 275.6 L826.1 331.0 L798.3 386.5 L770.6 442.0 L743.0 497.6 L715.6 553.3 L688.2 609.0 L661.0 664.7 L634.0 720.6 L607.0 776.4 L580.2 832.4 L553.5 888.4 L539.3 918.2 L538.8 917.4 L503.6 868.9 L468.4 820.5 L433.1 772.2 L397.6 723.9 L362.1 675.7 L326.4 627.6 L290.7 579.6 L254.9 531.6 L218.9 483.7 L182.9 435.9 L146.8 388.1 L111.2 341.2 L112.1 341.1 L169.3 333.1 L226.5 325.0 L283.7 316.9 L340.9 308.6 L398.1 300.2 L455.2 291.7 L512.4 283.2 L569.5 274.5 L626.6 265.7 L683.7 256.8 L740.8 247.8 L797.8 238.7 L825.3 234.3 L825.0 235.2 L804.9 287.2 L784.9 339.2 L765.0 391.3 L745.2 443.4 L725.4 495.6 L705.7 547.7 L686.2 599.9 L666.7 652.2 L647.3 704.5 L627.9 756.8 L608.7 809.1 L589.6 861.5 L570.5 913.9 L570.1 914.1 L569.6 913.5 L535.7 871.6 L501.8 829.9 L467.8 788.1 L433.8 746.5 L399.7 704.8 L365.5 663.3 L331.3 621.8 L297.0 580.3 L262.7 538.9 L228.3 497.5 L193.8 456.2 L159.3 414.9 L124.7 373.7 L106.9 352.1 L107.7 351.9 L159.0 343.7 L210.2 335.3 L261.5 326.9 L312.7 318.4 L363.9 309.8 L415.1 301.2 L466.3 292.5 L517.5 283.7 L568.6 274.9 L619.8 266.0 L670.9 257.1 L722.1 248.0 L773.2 238.9 L821.9 230.2 L821.6 230.9 L804.0 277.8 L786.4 324.7 L768.8 371.7 L751.3 418.6 L733.9 465.6 L716.5 512.6 L699.2 559.6 L682.0 606.7 L664.8 653.7 L647.6 700.8 L630.5 747.9 L613.5 795.0 L596.5 842.2 L579.6 889.3 L570.5 914.0 L570.1 913.4 L539.5 876.0 L508.9 838.5 L478.3 801.1 L447.6 763.7 L416.9 726.4 L386.1 689.1 L355.4 651.8 L324.5 614.6 L293.6 577.3 L262.7 540.2 L231.8 503.0 L200.8 465.9 L169.8 428.8 L138.7 391.8 L107.6 354.8 L106.5 353.2 L107.2 353.1 L153.3 345.6 L199.3 338.0 L245.4 330.4 L291.4 322.8 L337.4 315.1 L383.4 307.4 L429.4 299.6 L475.4 291.8 L521.4 284.0 L567.4 276.1 L613.4 268.1 L659.4 260.2 L705.3 252.1 L751.3 244.1 L797.2 235.9 L822.9 231.5 L822.7 232.1 L806.8 274.2 L790.9 316.4 L775.0 358.5 L759.2 400.7 L743.4 442.9 L727.7 485.0 L712.0 527.2 L696.3 569.5 L680.7 611.7 L665.1 653.9 L649.5 696.2 L634.0 738.4 L618.5 780.7 L603.1 823.0 L587.7 865.3 L572.3 907.6 L569.9 914.1 L569.5 913.6 L542.0 879.9 L514.5 846.3 L487.0 812.7 L459.4 779.1 L431.9 745.5 L404.3 711.9 L376.7 678.4 L349.0 644.9 L321.3 611.4 L293.6 577.9 L265.9 544.4 L238.1 511.0 L210.4 477.6 L182.6 444.2 L154.7 410.8 L126.9 377.5 L106.5 353.1 L107.2 353.0 L148.7 346.7 L190.1 340.5 L231.6 334.2 L273.0 327.8 L314.5 321.5 L355.9 315.1 L397.3 308.7 L438.8 302.2 L480.2 295.8 L521.6 289.3 L563.1 282.7 L604.5 276.2 L645.9 269.6 L687.3 263.0 L728.7 256.3 L770.1 249.7 L811.5 242.9 L829.9 240.1 L829.7 240.7 L813.7 277.8 L797.6 315.0 L781.6 352.2 L765.7 389.4 L749.7 426.5 L733.8 463.7 L717.9 501.0 L702.0 538.2 L686.2 575.4 L670.4 612.6 L654.6 649.9 L638.8 687.1 L623.0 724.4 L607.3 761.7 L591.6 799.0 L575.9 836.3 L560.2 873.6 L544.6 910.9 L541.4 918.0 L541.0 917.4 L519.4 884.9 L497.7 852.5 L476.1 820.0 L454.4 787.5 L432.7 755.0 L410.9 722.6 L389.2 690.2 L367.4 657.8 L345.6 625.3 L323.8 593.0 L302.0 560.6 L280.2 528.2 L258.3 495.8 L236.5 463.5 L214.6 431.2 L192.6 398.9 L170.7 366.5 L148.8 334.3 L128.5 304.1 L129.1 304.1 L166.7 303.9 L204.4 303.5 L242.1 303.2 L279.8 302.9 L317.4 302.5 L355.1 302.1 L392.8 301.7 L430.5 301.3 L468.2 300.8 L505.8 300.4 L543.5 299.9 L581.2 299.4 L618.9 298.9 L656.5 298.3 L694.2 297.8 L731.9 297.2 L769.6 296.6 L807.2 296.0 L844.9 295.3 L866.6 295.0 L866.3 295.5 L846.7 326.1 L827.1 356.7 L807.5 387.4 L787.9 418.0 L768.3 448.7 L748.8 479.3 L729.3 510.0 L709.7 540.7 L690.2 571.4 L670.8 602.1 L651.3 632.8 L631.8 663.5 L612.4 694.2 L592.9 725.0 L573.5 755.7 L554.1 786.5 L534.7 817.2 L515.4 848.0 L496.0 878.8 L476.7 909.5 L470.6 919.0 L470.4 918.5 L456.2 886.4 L442.0 854.3 L427.8 822.2 L413.5 790.2 L399.3 758.1 L385.0 726.0 L370.7 694.0 L356.4 661.9 L342.1 629.9 L327.8 597.9 L313.5 565.8 L299.1 533.8 L284.8 501.8 L270.4 469.8 L256.0 437.8 L241.6 405.8 L227.2 373.8 L212.7 341.8 L198.3 309.8 L183.9 277.9 L169.4 245.9 L168.1 242.6 L168.6 242.7 L202.0 248.5 L235.4 254.2 L268.7 260.0 L302.1 265.7 L335.5 271.4 L368.8 277.1 L402.2 282.8 L435.6 288.5 L469.0 294.2 L502.4 299.8 L535.8 305.5 L569.2 311.1 L602.5 316.7 L635.9 322.3 L669.3 327.9 L702.7 333.5 L736.1 339.1 L769.5 344.6 L802.9 350.1 L836.3 355.7 L869.8 361.2 L898.1 366.1 L897.7 366.4 L875.2 390.1 L852.7 413.8 L830.3 437.6 L807.8 461.3 L785.3 485.0 L762.9 508.8 L740.4 532.5 L718.0 556.3 L695.6 580.0 L673.2 603.8 L650.7 627.6 L628.3 651.3 L605.9 675.1 L583.5 698.9 L561.2 722.7 L538.8 746.6 L516.4 770.4 L494.1 794.2 L471.7 818.1 L449.4 841.9 L427.1 865.7 L404.7 889.6 L389.8 905.3 L389.7 904.8 L383.0 874.0 L376.2 843.2 L369.4 812.4 L362.6 781.6 L355.8 750.9 L348.9 720.1 L342.1 689.3 L335.3 658.5 L328.4 627.7 L321.6 596.9 L314.7 566.2 L307.8 535.4 L301.0 504.6 L294.1 473.9 L287.2 443.1 L280.2 412.3 L273.3 381.6 L266.4 350.8 L259.5 320.0 L252.5 289.3 L245.5 258.5 L238.6 227.8 L231.6 197.0 L227.9 180.0 L228.4 180.2 L256.7 191.4 L284.9 202.6 L313.2 213.8 L341.5 225.0 L369.8 236.2 L398.1 247.4 L426.4 258.6 L454.7 269.7 L483.0 280.9 L511.4 292.0 L539.7 303.2 L568.0 314.3 L596.3 325.4 L624.6 336.5 L653.0 347.6 L681.3 358.7 L709.6 369.8 L738.0 380.9 L766.3 392.0 L794.7 403.1 L823.0 414.1 L851.4 425.2 L879.7 436.2 L908.1 447.3 L917.1 450.9 L916.7 451.2 L892.7 468.0 L868.6 484.8 L844.6 501.7 L820.5 518.5 L796.5 535.4 L772.4 552.2 L748.4 569.1 L724.4 586.0 L700.3 602.9 L676.3 619.7 L652.3 636.6 L628.3 653.5 L604.3 670.4 L580.3 687.3 L556.2 704.2 L532.2 721.2 L508.3 738.1 L484.3 755.0 L460.3 771.9 L436.3 788.9 L412.3 805.8 L388.3 822.8 L364.4 839.7 L340.4 856.7 L316.4 873.7 L312.9 876.0 L312.8 875.6 L312.1 847.2 L311.4 818.9 L310.7 790.6 L310.0 762.3 L309.3 733.9 L308.5 705.6 L307.8 677.3 L307.0 648.9 L306.3 620.6 L305.5 592.3 L304.7 564.0 L304.0 535.6 L303.2 507.3 L302.4 479.0 L301.6 450.7 L300.8 422.3 L300.0 394.0 L299.2 365.7 L298.4 337.4 L297.6 309.1 L296.7 280.7 L295.9 252.4 L295.1 224.1 L294.2 195.8 L293.3 167.4 L292.5 139.1 L292.5 134.9 L292.8 135.1 L315.9 149.7 L339.0 164.4 L362.1 179.0 L385.2 193.7 L408.3 208.3 L431.4 222.9 L454.5 237.6 L477.6 252.2 L500.7 266.8 L523.8 281.4 L546.9 296.0 L570.0 310.6 L593.2 325.2 L616.3 339.8 L639.4 354.4 L662.5 369.0 L685.7 383.6 L708.8 398.2 L731.9 412.7 L755.1 427.3 L778.2 441.9 L801.4 456.4 L824.5 471.0 L847.7 485.5 L870.8 500.1 L894.0 514.6 L917.1 529.1 L918.9 530.3 L918.5 530.4 L894.4 541.1 L870.3 551.8 L846.2 562.5 L822.0 573.2 L797.9 583.9 L773.8 594.6 L749.7 605.3 L725.6 616.0 L701.5 626.7 L677.3 637.5 L653.2 648.2 L629.1 658.9 L605.0 669.7 L580.9 680.4 L556.8 691.1 L532.7 701.9 L508.6 712.6 L484.5 723.4 L460.4 734.2 L436.4 744.9 L412.3 755.7 L388.2 766.5 L364.1 777.3 L340.0 788.0 L315.9 798.8 L291.8 809.6 L267.8 820.4 L243.7 831.2 L242.3 831.7 L242.4 831.3 L246.5 806.2 L250.7 781.0 L254.8 755.9 L258.9 730.8 L263.0 705.7 L267.1 680.5 L271.2 655.4 L275.3 630.3 L279.4 605.1 L283.5 580.0 L287.6 554.9 L291.6 529.7 L295.7 504.6 L299.8 479.5 L303.8 454.3 L307.9 429.2 L312.0 404.0 L316.0 378.9 L320.1 353.8 L324.1 328.6 L328.2 303.5 L332.2 278.3 L336.2 253.2 L340.3 228.1 L344.3 202.9 L348.3 177.8 L352.3 152.6 L356.4 127.5 L360.1 104.0 L360.4 104.2 L378.8 120.6 L397.1 136.9 L415.5 153.3 L433.8 169.6 L452.2 186.0 L470.5 202.3 L488.9 218.6 L507.2 235.0 L525.6 251.3 L544.0 267.6 L562.3 283.9 L580.7 300.3 L599.1 316.6 L617.4 332.9 L635.8 349.2 L654.2 365.5 L672.6 381.8 L690.9 398.1 L709.3 414.4 L727.7 430.7 L746.1 447.0 L764.5 463.3 L782.9 479.6 L801.3 495.9 L819.7 512.2 L838.1 528.5 L856.5 544.8 L874.9 561.0 L893.3 577.3 L909.8 592.0 L909.4 592.1 L886.6 598.6 L863.8 605.1 L841.0 611.6 L818.2 618.1 L795.4 624.6 L772.6 631.1 L749.8 637.6 L727.0 644.1 L704.2 650.6 L681.4 657.1 L658.6 663.6 L635.8 670.2 L613.0 676.7 L590.2 683.2 L567.4 689.7 L544.6 696.3 L521.8 702.8 L499.0 709.3 L476.2 715.9 L453.5 722.4 L430.7 729.0 L407.9 735.5 L385.1 742.1 L362.3 748.6 L339.5 755.2 L316.7 761.7 L293.9 768.3 L271.2 774.9 L248.4 781.4 L225.6 788.0 L202.8 794.6 L201.1 795.0 L201.2 794.7 L207.6 772.7 L213.9 750.7 L220.3 728.8 L226.7 706.8 L233.0 684.8 L239.4 662.8 L245.8 640.9 L252.1 618.9 L258.5 596.9 L264.8 574.9 L271.2 552.9 L277.5 530.9 L283.9 509.0 L290.2 487.0 L296.6 465.0 L302.9 443.0 L309.3 421.0 L315.6 399.0 L321.9 377.0 L328.3 355.1 L334.6 333.1 L340.9 311.1 L347.2 289.1 L353.5 267.1 L359.9 245.1 L366.2 223.1 L372.5 201.1 L378.8 179.1 L385.1 157.1 L391.4 135.1 L397.7 113.1 L404.0 91.1 L404.2 91.1 L404.4 91.3 L419.1 107.8 L433.9 124.2 L448.6 140.7 L463.3 157.1 L478.1 173.6 L492.8 190.0 L507.5 206.5 L522.3 222.9 L537.0 239.4 L551.8 255.8 L566.5 272.2 L581.2 288.7 L596.0 305.1 L610.7 321.5 L625.5 338.0 L640.2 354.4 L655.0 370.8 L669.8 387.2 L684.5 403.7 L699.3 420.1 L714.0 436.5 L728.8 452.9 L743.6 469.4 L758.3 485.8 L773.1 502.2 L787.9 518.6 L802.6 535.0 L817.4 551.4 L832.2 567.8 L847.0 584.2 L861.8 600.6 L876.5 617.0 L891.3 633.4 L896.3 639.1 L896.0 639.1 L874.9 642.5 L853.9 645.9 L832.9 649.3 L811.8 652.7 L790.8 656.1 L769.8 659.6 L748.7 663.0 L727.7 666.4 L706.7 669.8 L685.7 673.2 L664.6 676.7 L643.6 680.1 L622.6 683.5 L601.5 686.9 L580.5 690.4 L559.5 693.8 L538.4 697.2 L517.4 700.7 L496.4 704.1 L475.4 707.6 L454.3 711.0 L433.3 714.5 L412.3 717.9 L391.2 721.4 L370.2 724.8 L349.2 728.3 L328.2 731.7 L307.1 735.2 L286.1 738.6 L265.1 742.1 L244.1 745.6 L223.0 749.0 L202.0 752.5 L181.0 756.0 L168.6 758.0" fill="none" stroke="#7d2f1e" stroke-width="3" stroke-linejoin="round" opacity="0.92"/>
+<circle class="gm" r="11" fill="#0a0806"/>
+</svg>
+<figcaption>The embodied &mdash; the same launch given weight and error. It bends. It wanders. It does not close. It lives once.</figcaption></figure>
+  </div>
+  <p>The embodied path is not the failed path. It is the V of the word &mdash; the descent into weight, the shadow of embodied existence, the route that errs because erring is what flesh does. The pattern does not condemn the wandering line; the pattern is what the wandering line is a life <em>of</em>. One is the law. The other is a life. The name AVOVA holds both, because it was always both: the journey that closes perfectly, and the journey that only happens once.</p>
+</section>
+
+
+
+<section class="section">
+  <span class="section-label">VI</span>
+  <h2>The Principles AVOVA Carries</h2>
+
+  <div class="principles">
+
+    <div class="principle">
+      <span class="principle-number">Principle One</span>
+      <span class="principle-title">The Palindrome Is the Proof</span>
+      <p>Truth does not change depending on which direction you are facing. Real things stay real no matter where you are standing. A truth that only holds from one angle is not truth — it is convenience. AVOVA is the same word forward and backward as a reminder: the universe does not favor your perspective. It simply is.</p>
+    </div>
+
+    <div class="principle">
+      <span class="principle-number">Principle Two</span>
+      <span class="principle-title">Zero Is Not Nothing</span>
+      <p>The center of AVOVA is not absence. It is the fullest possible presence — the consciousness that can hold everything without collapsing. The Watcher at zero is not checked out. It is more present than anything the two poles can produce. Stillness is not emptiness. It is the ground from which everything grows.</p>
+    </div>
+
+    <div class="principle">
+      <span class="principle-number">Principle Three</span>
+      <span class="principle-title">The Descent Was Never a Fall</span>
+      <p>The V in AVOVA is not a mistake in the sequence. It is not the part the name wishes it could skip. The descent into the negative — into shadow, weight, loss, the embodied life — is the route to the center. There is no arriving at the O without passing through the V. The wound is not the opposite of the journey. The wound is the door.</p>
+    </div>
+
+    <div class="principle">
+      <span class="principle-number">Principle Four</span>
+      <span class="principle-title">Connection Is More Fundamental Than Separation</span>
+      <p>Everything Avova teaches reduces to this. Separation is the wound beneath most suffering. The recognition of connection is the beginning of all healing. Not because connection is sentimental — but because it is structural. The torus does not produce fragments. It produces a continuous flow. You were never cut off from Source. You were always part of the curve.</p>
+    </div>
+
+    <div class="principle">
+      <span class="principle-number">Principle Five</span>
+      <span class="principle-title">Truth Behaves Like Water</span>
+      <p>It cannot be permanently stopped. It finds cracks. It moves around obstacles. It eventually reshapes stone. Institutions can dam it. Armies can redirect it. Doctrine can freeze it. But truth in its nature is liquid — patient, persistent, unstoppable. Given enough time, it gets through. It always gets through.</p>
+    </div>
+
+    <div class="principle">
+      <span class="principle-number">Principle Six</span>
+      <span class="principle-title">The Bridge Does Not End When the Body Dies</span>
+      <p>The mission was never continuation. The mission was connection. A bridge doesn't need to last forever to have done its work. It needs to have connected two things that could not otherwise touch. Every person who lived by this principle — however briefly, however quietly — changed the shape of what came after. The bridge doesn't end when the body dies. It ends when the last ripple fades.</p>
+    </div>
+
+    <div class="principle">
+      <span class="principle-number">Principle Seven</span>
+      <span class="principle-title">The Door Was Never Locked</span>
+      <p>Access to the Source — to truth, to love, to the zero at the center of all things — was never gated. No institution owns it. No doctrine controls it. No price is owed for it. The road was always there. Anyone who claims to be selling passage on that road is selling something that was never theirs to sell. The door was never locked. It was only ever described as locked by those who wanted to sell keys.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- VII. THE CHARACTER -->
+<section class="section" id="the-character">
+  <span class="section-label">VII</span>
+  <h2>The Woman Who Lived the Word</h2>
+
+  <p>A philosophy needs a body. An idea needs a life that demonstrates it — not in theory, but in the full cost of actually living it. That is why AVOVA became a character.</p>
+
+  <p>Her mother was named Olga. She went by Oli, or Ola, because she hated hard sounds. She said a name should feel like water in the mouth, not stones. She gave her daughter the most perfect word she had ever found — a palindrome, the same in both directions — and then sold her.</p>
+
+  <p>The child was twelve years old.</p>
+
+  <p>For years the woman went by Ava. Two letters. Short. Guarded. Nothing given away. The full name carried too much — too much love, too much betrayal, too much of a mother who had planted a star in letters and then handed her to strangers.</p>
+
+  <div class="pullquote">
+    She was sold at twelve. Sold twice.<br>
+    She counted 47 stones in the room where she waited.<br>
+    She survived. She escaped.<br>
+    She taught.
+  </div>
+
+  <p>She taught not from authority but from clarity. Not by arguing but by planting. She told stories. She asked questions. She waited. She was not trying to win. She was trying to plant something that would survive her.</p>
+
+  <p>When she finally spoke her full name aloud — A-V-O-V-A — it was not because she had healed. It was because she had finally trusted enough to be seen. And it was a child named Lura who, the next morning before dawn, traced the letters in the ash of a dead fire and saw what no one else had seen:</p>
+
+  <div class="pullquote">
+    "Her mother gave her a star. She just hid it in letters."
+  </div>
+
+  <p>Avova had carried a star her entire life and never known it was there. A child saw in minutes what she couldn't see in decades. Because children see in shapes. Adults understand with words. The deepest things are not figured out. They are seen.</p>
+
+  <p>When Lura showed her — the A at the top, the V's at the sides, the O at the center, the A at the base, a perfect five-pointed star encoded in five letters — Avova collapsed.</p>
+
+  <p>Her mother had not only given her a word. Her mother had given her a star. The same hand that sold her had hidden a light inside her name. She was the palindrome. The mother who betrayed and the mother who saved. Both. At once. In the same act.</p>
+
+  <p><em>Love doesn't mean they never hurt you. It just means they also gave you a star.</em></p>
+</section>
+
+<!-- VIII. THE ARC -->
+<section class="section">
+  <span class="section-label">VIII</span>
+  <h2>The Arc of a Life That Became a Word</h2>
+
+  <div class="arc">
+
+    <div class="arc-step">
+      <span class="arc-stage">Books 1–3 — Before</span>
+      <span class="arc-desc">The philosophy exists. The word exists. The teaching moves through the world, unnamed, carried by those who learned it without knowing its source.</span>
+    </div>
+
+    <div class="arc-step">
+      <span class="arc-stage">Book 4 — Ava</span>
+      <span class="arc-desc">She arrives as "Ava." Guarded. The full name withheld. She teaches, she plants, she builds trust — but she keeps her most essential self hidden. Even she has not yet seen the star.</span>
+    </div>
+
+    <div class="arc-step">
+      <span class="arc-stage">Book 4, Chapter 31 — The Hidden Star</span>
+      <span class="arc-desc">Three movements in one night: she gives her name, a child shows her the star, she gives her full story. The most personal wound becomes the most universal teaching. The name is finally whole.</span>
+    </div>
+
+    <div class="arc-step">
+      <span class="arc-stage">Book 7 — Execution</span>
+      <span class="arc-desc">She is killed for teaching truth freely, and love keeps singing over the place where she fell. Her death is not a defeat. It is the ultimate demonstration of the seventh principle.</span>
+    </div>
+
+    <div class="arc-step">
+      <span class="arc-stage">Books 8–9 — The Ripple</span>
+      <span class="arc-desc">Avova is gone from the page but not from the story. Her absence becomes presence. Baby Ava is named in her honor. Her daughter Oliva — raised under another name, Nova, waiting to be found — carries the thread forward.</span>
+    </div>
+
+    <div class="arc-step">
+      <span class="arc-stage">Book 12 — The Realms — Herald</span>
+      <span class="arc-desc">She returns as the guide through the 13 realms of existence after death. The woman who never saw the star in her own name becomes the guide through the realm of ultimate seeing. Her calling: Return. Her herald cry: "The journey back." The torus completes its turn.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- IX. THE HERALD -->
+<section class="section">
+  <span class="section-label">IX</span>
+  <h2>Why AVOVA Belongs to No Tradition</h2>
+
+  <p>The thirteen Heralds of the series spell SONFLOWER BEAR, one for each book. Each Herald name is drawn from an ancient language tradition — Sumerian, Arabic, Hebrew, Sanskrit, and others. Each honors a specific cultural root of human spiritual understanding.</p>
+
+  <p>AVOVA is the A. And AVOVA alone is listed as Universal — belonging to no tradition, sourced from no language, borrowed from no culture. It was created. Not translated. Not sourced. Built from scratch, from pure philosophical intention.</p>
+
+  <p>This was deliberate. The bridge cannot belong to one side. A bridge that is claimed by one shore is not a bridge — it is an extension of that shore. AVOVA was made universal because the truth she carries is universal. It predates every tradition that has tried to own it. It will outlast every institution that has tried to contain it.</p>
+
+  <div class="pullquote">
+    Sumerian honors the oldest root.<br>
+    Arabic honors one great Abrahamic tradition.<br>
+    Hebrew honors the other.<br>
+    AVOVA stands in the center.<br>
+    The bridge belongs to everyone.<br>
+    Or it belongs to no one.<br>
+    Which is the same thing.
+  </div>
+</section>
+
+<!-- X. THE MISSION -->
+<section class="section">
+  <span class="section-label">X</span>
+  <h2>The Mission Statement</h2>
+
+  <p>There is one line in the entire saga that functions as the thesis of AVOVA's existence. It is spoken by her, to a grieving mother, about a daughter who died at fourteen without children, without continuation, without what most would call a legacy.</p>
+
+  <div class="pullquote">
+    "The mission was never to have children.<br>
+    The mission was to be a bridge."
+  </div>
+
+  <p>This single line dismantles the assumption that a life is measured by what it produces, what it continues, what persists in its name. Leilani was a bridge for fourteen years. She changed her mother. Her mother changed everyone she touched. The bridge doesn't end when the body dies. It ends when the last ripple fades.</p>
+
+  <p>And ripples — in a toroidal universe — do not fade. They curve. They return. They become the next wave outward from the center.</p>
+
+  <p>This is AVOVA's manifesto in its most compressed form: you are not a factory. You are a bridge. Your job is not to produce — it is to connect. To stand between what cannot otherwise touch and make connection possible. To carry the current between the positive and the negative without being destroyed by either. To hold the zero at your center and let that stillness be the thing that changes everything around you.</p>
+
+  <p>The bridge doesn't ask to be remembered. It asks only to have held, for as long as it stood, the weight of everything that crossed it.</p>
+</section>
+
+<!-- XI. THE GIFT -->
+<section class="section">
+  <span class="section-label">XI</span>
+  <h2>What Is Given Freely Belongs to Everyone</h2>
+
+  <p>One person found this. One person sat down with a pencil and a journal fifteen years ago and drew out the sequence. One person registered avova.org — not dot com, dot org — because the choice of extension was itself a statement about what this is and what it isn't.</p>
+
+  <p>It isn't a product. It isn't a brand. It isn't something to be sold or licensed or used to build an empire.</p>
+
+  <p>It was made to be given away. And what is made as a gift does not belong to the maker — it belongs to everyone who needs it.</p>
+
+  <div class="pullquote">
+    You can own the moment of finding.<br>
+    You cannot own what was found.<br>
+    Truth was never anyone's property.
+  </div>
+
+  <p>This is why the domain is dot org. AVOVA belongs to whoever needs it — the person who cannot find the still center, the reader who has never been told the journey out and the journey back are the same journey. Pass it on. That is the only instruction.</p>
+</section>
+
+<!-- EMAIL BOTTOM -->
+<div class="subscribe-bar">
+  <p class="subscribe-text">Subscribe for updates</p>
+  <form class="subscribe-form" onsubmit="handleSubscribe(event, 'confirm-bottom')">
+    <input type="email" class="subscribe-input" placeholder="Your email address" required>
+    <button type="submit" class="subscribe-btn">Subscribe</button>
+  </form>
+  <p class="subscribe-confirm" id="confirm-bottom" style="display:none;">Thank you. You'll hear from us.</p>
+</div>
+
+<!-- CLOSING -->
+<section class="closing">
+  <span class="closing-word">A · V · O · V · A</span>
+
+  <p>Not a character. A philosophy that became a character.</p>
+  <p>Not a name. A pattern that became a name.</p>
+  <p>Not a story. A law of the universe, told as a story, so the universe could recognize itself.</p>
+
+  <div class="divider"></div>
+
+  <p>Read it forward. Read it backward.</p>
+  <p>It says the same thing.</p>
+  <p>The journey out and the journey back are the same journey.</p>
+  <p>The departure and the return are written in the same five letters.</p>
+  <p>You were never lost.</p>
+  <p>You were always on the way home.</p>
+
+  <p class="final-line">
+    The thread runs through everything that breathes.<br>
+    We never forgot. You did.
+  </p>
+</section>
+
+</body>
+</html>
